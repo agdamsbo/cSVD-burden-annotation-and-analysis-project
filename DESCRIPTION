@@ -1,7 +1,28 @@
-Package: svd-burden
+Package: cSVD burden annotation and analysis project
 Type: Project
-Version: 0.0.1
-Imports:
+Version: 2023.11.1
+Authors@R: 
+    person("Andreas Gammelgaard", "Damsbo", , "agdamsbo@clin.au.dk", role = c("aut", "cre"),
+           comment = c(ORCID = "0000-0002-7559-1154"))
+Suggests: 
+    pak,
+    prodigenr,
+    renv,
+    usethis,
+    styler,
+    gitcreds
+Depends: 
+    tidymodels,
+    tidyverse
+Imports: 
+    here,
+    keyring,
+    quarto,
+    REDCapR,
+    skimr,
+    tarchetypes,
+    targets,
     knitr,
     rmarkdown
 Encoding: UTF-8
+License: CC BY 4.0
