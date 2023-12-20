@@ -10,7 +10,8 @@ Suggests:
     renv,
     usethis,
     styler,
-    gitcreds
+    gitcreds,
+    roxygen2
 Depends: 
     tidymodels,
     tidyverse
