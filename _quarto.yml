@@ -7,8 +7,10 @@ website:
     left:
       - href: index.qmd
         text: Home
-      - href: doc/annotation.qmd
-        text: "Annotation"
+      - href: doc/svd-score.qmd
+        text: Annotation
+      - href: doc/instrument.qmd
+        text: Capturing
   page-footer:
     center:
       - text: "License: CC BY 4.0 {{< fa brands creative-commons >}} {{< fa brands creative-commons-by >}}"

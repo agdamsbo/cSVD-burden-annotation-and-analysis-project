@@ -11,7 +11,8 @@ Suggests:
     usethis,
     styler,
     gitcreds,
-    roxygen2
+    roxygen2,
+    remotes
 Depends: 
     tidymodels,
     tidyverse
@@ -24,6 +25,7 @@ Imports:
     tarchetypes,
     targets,
     knitr,
-    rmarkdown
+    rmarkdown,
+    gt
 Encoding: UTF-8
 License: CC BY 4.0
