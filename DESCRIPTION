@@ -1,6 +1,6 @@
 Package: cSVD burden annotation and analysis project
 Type: Project
-Version: 2023.11.1
+Version: 2024.1.1
 Authors@R: 
     person("Andreas Gammelgaard", "Damsbo", , "agdamsbo@clin.au.dk", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0002-7559-1154"))
