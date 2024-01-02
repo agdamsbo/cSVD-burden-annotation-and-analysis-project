@@ -11,6 +11,8 @@ website:
         text: Annotation
       - href: doc/instrument.qmd
         text: Capturing
+      - href: doc/accessor-intro.qmd
+        text: Accessors
   page-footer:
     center:
       - text: "License: CC BY 4.0 {{< fa brands creative-commons >}} {{< fa brands creative-commons-by >}}"
@@ -26,7 +28,8 @@ knitr:
 
 execute:
   freeze: auto
-  echo: true
+  echo: false
+  eval: false
 
 editor:
   markdown:
