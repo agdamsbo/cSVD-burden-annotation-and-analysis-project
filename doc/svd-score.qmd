@@ -1,16 +1,16 @@
 ---
 title: "SVD score tool"
-date: 2023-01-02
-author: Andreas Gammelgaard Damsbo
+date: 2024-01-02
 editor: visual
+format: 
+  html: default
+  pdf: default
 headertext: Consensus paper on short SVD scoring for historical MR scans
 toc: true
 bibliography: references.bib
 ---
 
-Consensus paper
-
-# Purpose
+## Purpose
 
 **Primary:** continuous scale for grading SVD burden, for possible use
 in current as well as historical data.
@@ -21,15 +21,14 @@ to life style factors.
 ::: callout-caution
 ## Only intended for research use currently
 
-The following scoring system is not formally published and not
-peer-reviewed.
+The following scoring system is not formally published and has not been
+through peer-review.
 :::
 
-# Scoring
+## Scoring
 
-|                                                             |                         |
-|----------------------------------------------------|--------------------|
 | **MRI features**                                            | **Raw SVD score value** |
+|-------------------------------------------------------------|-------------------------|
 | **Number of microbleeds (*T2\*/SWI*)**                      |                         |
 | 0                                                           | 0                       |
 | 1                                                           | 1                       |
@@ -57,9 +56,11 @@ peer-reviewed.
 | Mild                                                        | 1                       |
 | Moderate                                                    | 2                       |
 | Severe                                                      | 3                       |
-| **Total SVD score**                                         | **0-16**                |
+| **Total SVD score**                                         | **0-15**                |
 
-# Setting
+: SVD score table {.striped .hover}
+
+## Setting
 
 The scoring system is intended for use with acute MRI stroke scans.
 Scans are performed according to the acute stroke protocol at the given
@@ -71,12 +72,12 @@ different populations.
 Scoring is performed independently by trained neurologists.
 Inter-rate-reliability-measures are performed to ensure validity.
 
-# Definitions on biomarkers 
+## Definitions on biomarkers
 
 Definitions are mainly according to the STRIVE v1
 criteria,[@wardlaw2013] with minor local specifications.
 
-## Microbleeds
+### Microbleeds
 
 Sequence: T2\*/SWI
 
@@ -91,21 +92,21 @@ As discussions about the importance of location is
 ongoing,[@vernooij2008] we register if microbleeds are located lobar,
 deep, or infratentorial.
 
-## Superficial siderosis
+### Superficial siderosis
 
 Sequence: T2\*/SWI
 
 "Investigators should describe the location of siderosis (i.e., the
-number of sulci involved and in which lobes)."[@wardlaw2013] p. 828.
+number of sulci involved and in which lobes)."[@wardlaw2013, p. 828]
 
-## Lacunes
+### Lacunar infarcts
 
 Sequence: 2D/3D FLAIR
 
 "A round or ovoid, subcortical, fluid-filled cavity (signal similar to
 CSF) of between 3 mm and about 15 mm in diameter, consistent with a
 previous acute small subcortical infarct or haemorrhage in the territory
-of one perforating arteriole."[@wardlaw2013] p. 825)
+of one perforating arteriole."[@wardlaw2013, p. 825]
 
 Additionally: "We identified asymptomatic lacunar infarcts as sharply
 demarcated hyperintense lesions \<20 mm on T2-weighted images with
@@ -113,7 +114,7 @@ corresponding hypointense lesions with a hyperintense rim on FLAIR. In
 lacunar stroke patients, the lesion could not be compatible with the
 clinical stroke."[@huijts2013]
 
-## White matter hyperintensities
+### White matter hyperintensities
 
 Sequence: 2D/3D FLAIR
 
@@ -127,11 +128,16 @@ with [visual
 reference](https://radiopaedia.org/cases/fazekas-scale-for-white-matter-lesions?lang=us)
 from [Radiopedia.org](https://radiopaedia.org/).
 
-## Atrophy
+### Atrophy
 
 Sequence: 2D/3D FLAIR or T1
 
 We follow definitions for the Global Cerebral Atrophy (GCA)
 score.[@harper2015]
 
-A picture sample for reference is used, figure 1 in the reference above.
+A picture sample for reference is used.[@harper2015, figure 1]
+
+## References
+
+::: {#refs}
+:::
