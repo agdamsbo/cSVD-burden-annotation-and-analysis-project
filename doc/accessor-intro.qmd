@@ -1,0 +1,115 @@
+---
+title: "Accessor introduction"
+author: "Andreas G. Damsbo"
+format: pdf
+editor: visual
+---
+
+Small vessel disease burden project (Pooled TALOS and RESIST)
+
+# Introduction
+
+SVD in the brain is still uncharted territory. We have two large
+datasets (possibly supplemented with additional projects) on acute
+stroke patients that we have the opportunity to merge and link with data
+from MRI scans. The first project is to investigate the relationship
+between various lifestyle factors and the degree of SVD among stroke
+patients. We also plan to use the data for other projects in the future.
+
+# Establishing a Consensus
+
+No widely used scoring system exists, that considers all elements of
+SVD. The Fazekas score is widely used, but only accounts for white
+matter hyperintensities (WMH).
+
+Based on existing studies, we have developed a scoring tool for this
+purpose, relying on FLAIR and T2\*/SWI sequences from the acute scans.
+We are interested in microbleeds, superficial siderosis, previous
+lacunar infarcts, white matter hyperintensities, and atrophy.
+
+We have created a minimal registration tool in REDCap, that will later
+be enriched with metadata on the scans.
+
+# Participation
+
+I want to invite you all to participate in this project. I will conduct
+a short teaching session on the material (see later), and you will be
+assigned a set number of subjects to evaluate.
+
+Your benefits:
+
+-       Role as co-author on the first paper based on the data and
+possibly participate on later publications (normal criteria for
+participation)
+
+-       Extensive experience evaluating SVD in acute stroke patients
+which will benefit you and your patients in the future
+
+-       A big thank you
+
+-       Access to all source code used for data acquisition and analyses
+(shared under an open source license)
+
+# Game plan
+
+When I get your response, I
+
+\*\*Slide 5: Educational Material\*\*
+
+\- \*\*Objective:\*\* Facilitate understanding through various
+resources.
+
+\- Create instructional videos or documentation.
+
+\- Ensure scoring can be done on a standard computer.
+
+\- Consider a short course with examples (pull from ENIGMA).
+
+\-\--
+
+\*\*Slide 6: Initial Scoring and Reliability Test\*\*
+
+\- \*\*Objective:\*\* Ensure consistency.
+
+\- All participants perform the same first 10 scorings.
+
+\- Conduct an inter-rater-reliability test.
+
+\- If acceptable, proceed; if not, rerun education.
+
+\-\--
+
+\*\*Slide 7: Team Engagement\*\*
+
+\- \*\*Objective:\*\* Maintain motivation and collaboration.
+
+\- Delegate a set number of subjects to each colleague.
+
+\- Foster team spirit through friendly competitions.
+
+\-\--
+
+\*\*Slide 8: Project Milestones\*\*
+
+\- Highlight key milestones and deadlines.
+
+\- Regular check-ins and progress updates.
+
+\-\--
+
+\*\*Slide 9: Q&A\*\*
+
+\- Open the floor for questions and discussions.
+
+\-\--
+
+\*\*Slide 10: Conclusion\*\*
+
+\- Thank you for your commitment to advancing our MRI-based scans!
+
+\- Stay tuned for updates and let's make Project C a success together!
+
+\-\--
+
+Feel free to customize the script further based on your specific needs
+and additional details.
