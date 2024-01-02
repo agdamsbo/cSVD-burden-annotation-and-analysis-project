@@ -6,10 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Andreas Gammelgaard Damsbo">
-<meta name="dcterms.date" content="2023-01-02">
+<meta name="author" content="Andreas">
+<meta name="dcterms.date" content="2024-01-02">
 
-<title>cSVD burden project - SVD score instrument</title>
+<title>cSVD burden project - Data capturing instrument</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -94,6 +94,10 @@ ul.task-list li input[type="checkbox"] {
     <a class="nav-link active" href="../doc/instrument.html" rel="" target="" aria-current="page">
  <span class="menu-text">Capturing</span></a>
   </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../doc/accessor-intro.html" rel="" target="">
+ <span class="menu-text">Accessors</span></a>
+  </li>  
 </ul>
             <div class="quarto-navbar-tools ms-auto">
 </div>
@@ -120,7 +124,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">SVD score instrument</h1>
+<h1 class="title">Data capturing instrument</h1>
 </div>
 
 
@@ -129,8 +133,15 @@ ul.task-list li input[type="checkbox"] {
   <div class="quarto-title-meta-heading">Affiliation</div>
   
     <div class="quarto-title-meta-contents">
-    <p class="author">Andreas Gammelgaard Damsbo </p>
+    <p class="author"><a href="https://pure.au.dk/portal/en/persons/andreas-gammelgaard-damsbo(e3c4afce-3eba-4456-8b8b-2fd90775c87a).html">Andreas</a> <a href="https://orcid.org/0000-0002-7559-1154" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
   </div>
+    <div class="quarto-title-meta-contents">
+        <p class="affiliation">
+            <a href="https://www.en.auh.dk/departments/danish-stroke-centre/">
+            Danish Stroke Centre, AUH
+            </a>
+          </p>
+      </div>
     </div>
 
 <div class="quarto-title-meta">
@@ -139,7 +150,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">January 2, 2023</p>
+      <p class="date">January 2, 2024</p>
     </div>
   </div>
   
@@ -149,21 +160,16 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<div class="cell">
-<div class="cell-output cell-output-stderr">
-<pre><code>The data dictionary describing 30 fields was read from REDCap in 0.3 seconds.  The http status code was 200.</code></pre>
-</div>
-</div>
 <section id="clinical-data" class="level1">
 <h1>Clinical data</h1>
 <p>Minimal necessary clinical data for scoring are pooled and uploaded to a separate data base.</p>
-<p>The scripts used are fairly trivial, but can serve as inspirational. The functions used can <a href="R/functions.R">be found here</a>.</p>
+<p>The scripts used are fairly trivial, but can serve as inspirational. The functions used can <a href="https://raw.githubusercontent.com/agdamsbo/cSVD-burden-annotation-and-analysis-project/main/R/functions.R">be found here</a>.</p>
 <p>The simple pipeline is as follows</p>
 </section>
 <section id="using-redcap" class="level1">
 <h1>Using REDCap</h1>
 <p>All clinical data capturing for this project is performed with <a href="https://projectredcap.org/">REDCap</a>.</p>
-<p>Get our most recent <a href="data/svd-datadictionary.csv">data dictionary here</a> to use in your own project. Note that the text on a few fields are in Danish.</p>
+<p>Get our most recent <a href="https://raw.githubusercontent.com/agdamsbo/cSVD-burden-annotation-and-analysis-project/main/data/svd-datadictionary.csv">data dictionary here</a> to inspect. Note that the text on a few fields are in Danish.</p>
 <p>The dictionary can be previewed below:</p>
 <div class="cell">
 <div class="cell-output cell-output-stderr">
@@ -178,23 +184,23 @@ lgl  (8): field_note, text_validation_min, text_validation_max, required_fie...
 </div>
 <div class="cell-output-display">
 
-<div id="fifbzajaea" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#fifbzajaea table {
+<div id="gwtjlrjwaw" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#gwtjlrjwaw table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#fifbzajaea thead, #fifbzajaea tbody, #fifbzajaea tfoot, #fifbzajaea tr, #fifbzajaea td, #fifbzajaea th {
+#gwtjlrjwaw thead, #gwtjlrjwaw tbody, #gwtjlrjwaw tfoot, #gwtjlrjwaw tr, #gwtjlrjwaw td, #gwtjlrjwaw th {
   border-style: none;
 }
 
-#fifbzajaea p {
+#gwtjlrjwaw p {
   margin: 0;
   padding: 0;
 }
 
-#fifbzajaea .gt_table {
+#gwtjlrjwaw .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -220,12 +226,12 @@ lgl  (8): field_note, text_validation_min, text_validation_max, required_fie...
   border-left-color: #D3D3D3;
 }
 
-#fifbzajaea .gt_caption {
+#gwtjlrjwaw .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#fifbzajaea .gt_title {
+#gwtjlrjwaw .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -237,7 +243,7 @@ lgl  (8): field_note, text_validation_min, text_validation_max, required_fie...
   border-bottom-width: 0;
 }
 
-#fifbzajaea .gt_subtitle {
+#gwtjlrjwaw .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -249,7 +255,7 @@ lgl  (8): field_note, text_validation_min, text_validation_max, required_fie...
   border-top-width: 0;
 }
 
-#fifbzajaea .gt_heading {
+#gwtjlrjwaw .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -261,13 +267,13 @@ lgl  (8): field_note, text_validation_min, text_validation_max, required_fie...
   border-right-color: #D3D3D3;
 }
 
-#fifbzajaea .gt_bottom_border {
+#gwtjlrjwaw .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#fifbzajaea .gt_col_headings {
+#gwtjlrjwaw .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -282,7 +288,7 @@ lgl  (8): field_note, text_validation_min, text_validation_max, required_fie...
   border-right-color: #D3D3D3;
 }
 
-#fifbzajaea .gt_col_heading {
+#gwtjlrjwaw .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -302,7 +308,7 @@ lgl  (8): field_note, text_validation_min, text_validation_max, required_fie...
   overflow-x: hidden;
 }
 
-#fifbzajaea .gt_column_spanner_outer {
+#gwtjlrjwaw .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -314,15 +320,15 @@ lgl  (8): field_note, text_validation_min, text_validation_max, required_fie...
   padding-right: 4px;
 }
 
-#fifbzajaea .gt_column_spanner_outer:first-child {
+#gwtjlrjwaw .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#fifbzajaea .gt_column_spanner_outer:last-child {
+#gwtjlrjwaw .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#fifbzajaea .gt_column_spanner {
+#gwtjlrjwaw .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -334,11 +340,11 @@ lgl  (8): field_note, text_validation_min, text_validation_max, required_fie...
   width: 100%;
 }
 
-#fifbzajaea .gt_spanner_row {
+#gwtjlrjwaw .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#fifbzajaea .gt_group_heading {
+#gwtjlrjwaw .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -364,7 +370,7 @@ lgl  (8): field_note, text_validation_min, text_validation_max, required_fie...
   text-align: left;
 }
 
-#fifbzajaea .gt_empty_group_heading {
+#gwtjlrjwaw .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -379,15 +385,15 @@ lgl  (8): field_note, text_validation_min, text_validation_max, required_fie...
   vertical-align: middle;
 }
 
-#fifbzajaea .gt_from_md > :first-child {
+#gwtjlrjwaw .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#fifbzajaea .gt_from_md > :last-child {
+#gwtjlrjwaw .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#fifbzajaea .gt_row {
+#gwtjlrjwaw .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -406,7 +412,7 @@ lgl  (8): field_note, text_validation_min, text_validation_max, required_fie...
   overflow-x: hidden;
 }
 
-#fifbzajaea .gt_stub {
+#gwtjlrjwaw .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -419,7 +425,7 @@ lgl  (8): field_note, text_validation_min, text_validation_max, required_fie...
   padding-right: 5px;
 }
 
-#fifbzajaea .gt_stub_row_group {
+#gwtjlrjwaw .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -433,15 +439,15 @@ lgl  (8): field_note, text_validation_min, text_validation_max, required_fie...
   vertical-align: top;
 }
 
-#fifbzajaea .gt_row_group_first td {
+#gwtjlrjwaw .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#fifbzajaea .gt_row_group_first th {
+#gwtjlrjwaw .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#fifbzajaea .gt_summary_row {
+#gwtjlrjwaw .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -451,16 +457,16 @@ lgl  (8): field_note, text_validation_min, text_validation_max, required_fie...
   padding-right: 5px;
 }
 
-#fifbzajaea .gt_first_summary_row {
+#gwtjlrjwaw .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#fifbzajaea .gt_first_summary_row.thick {
+#gwtjlrjwaw .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#fifbzajaea .gt_last_summary_row {
+#gwtjlrjwaw .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -470,7 +476,7 @@ lgl  (8): field_note, text_validation_min, text_validation_max, required_fie...
   border-bottom-color: #D3D3D3;
 }
 
-#fifbzajaea .gt_grand_summary_row {
+#gwtjlrjwaw .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -480,7 +486,7 @@ lgl  (8): field_note, text_validation_min, text_validation_max, required_fie...
   padding-right: 5px;
 }
 
-#fifbzajaea .gt_first_grand_summary_row {
+#gwtjlrjwaw .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -490,7 +496,7 @@ lgl  (8): field_note, text_validation_min, text_validation_max, required_fie...
   border-top-color: #D3D3D3;
 }
 
-#fifbzajaea .gt_last_grand_summary_row_top {
+#gwtjlrjwaw .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -500,11 +506,11 @@ lgl  (8): field_note, text_validation_min, text_validation_max, required_fie...
   border-bottom-color: #D3D3D3;
 }
 
-#fifbzajaea .gt_striped {
+#gwtjlrjwaw .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#fifbzajaea .gt_table_body {
+#gwtjlrjwaw .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -513,7 +519,7 @@ lgl  (8): field_note, text_validation_min, text_validation_max, required_fie...
   border-bottom-color: #D3D3D3;
 }
 
-#fifbzajaea .gt_footnotes {
+#gwtjlrjwaw .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -527,7 +533,7 @@ lgl  (8): field_note, text_validation_min, text_validation_max, required_fie...
   border-right-color: #D3D3D3;
 }
 
-#fifbzajaea .gt_footnote {
+#gwtjlrjwaw .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -536,7 +542,7 @@ lgl  (8): field_note, text_validation_min, text_validation_max, required_fie...
   padding-right: 5px;
 }
 
-#fifbzajaea .gt_sourcenotes {
+#gwtjlrjwaw .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -550,7 +556,7 @@ lgl  (8): field_note, text_validation_min, text_validation_max, required_fie...
   border-right-color: #D3D3D3;
 }
 
-#fifbzajaea .gt_sourcenote {
+#gwtjlrjwaw .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -558,63 +564,63 @@ lgl  (8): field_note, text_validation_min, text_validation_max, required_fie...
   padding-right: 5px;
 }
 
-#fifbzajaea .gt_left {
+#gwtjlrjwaw .gt_left {
   text-align: left;
 }
 
-#fifbzajaea .gt_center {
+#gwtjlrjwaw .gt_center {
   text-align: center;
 }
 
-#fifbzajaea .gt_right {
+#gwtjlrjwaw .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#fifbzajaea .gt_font_normal {
+#gwtjlrjwaw .gt_font_normal {
   font-weight: normal;
 }
 
-#fifbzajaea .gt_font_bold {
+#gwtjlrjwaw .gt_font_bold {
   font-weight: bold;
 }
 
-#fifbzajaea .gt_font_italic {
+#gwtjlrjwaw .gt_font_italic {
   font-style: italic;
 }
 
-#fifbzajaea .gt_super {
+#gwtjlrjwaw .gt_super {
   font-size: 65%;
 }
 
-#fifbzajaea .gt_footnote_marks {
+#gwtjlrjwaw .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#fifbzajaea .gt_asterisk {
+#gwtjlrjwaw .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#fifbzajaea .gt_indent_1 {
+#gwtjlrjwaw .gt_indent_1 {
   text-indent: 5px;
 }
 
-#fifbzajaea .gt_indent_2 {
+#gwtjlrjwaw .gt_indent_2 {
   text-indent: 10px;
 }
 
-#fifbzajaea .gt_indent_3 {
+#gwtjlrjwaw .gt_indent_3 {
   text-indent: 15px;
 }
 
-#fifbzajaea .gt_indent_4 {
+#gwtjlrjwaw .gt_indent_4 {
   text-indent: 20px;
 }
 
-#fifbzajaea .gt_indent_5 {
+#gwtjlrjwaw .gt_indent_5 {
   text-indent: 25px;
 }
 </style>

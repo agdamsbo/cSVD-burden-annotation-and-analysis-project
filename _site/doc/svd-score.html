@@ -6,8 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Andreas Gammelgaard Damsbo">
-<meta name="dcterms.date" content="2023-01-02">
+<meta name="author" content="Andreas">
+<meta name="dcterms.date" content="2024-01-02">
 
 <title>cSVD burden project - SVD score tool</title>
 <style>
@@ -113,6 +113,10 @@ div.csl-indent {
     <a class="nav-link" href="../doc/instrument.html" rel="" target="">
  <span class="menu-text">Capturing</span></a>
   </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../doc/accessor-intro.html" rel="" target="">
+ <span class="menu-text">Accessors</span></a>
+  </li>  
 </ul>
             <div class="quarto-navbar-tools ms-auto">
 </div>
@@ -136,12 +140,13 @@ div.csl-indent {
   <ul class="collapse">
   <li><a href="#microbleeds" id="toc-microbleeds" class="nav-link" data-scroll-target="#microbleeds">Microbleeds</a></li>
   <li><a href="#superficial-siderosis" id="toc-superficial-siderosis" class="nav-link" data-scroll-target="#superficial-siderosis">Superficial siderosis</a></li>
-  <li><a href="#lacunes" id="toc-lacunes" class="nav-link" data-scroll-target="#lacunes">Lacunes</a></li>
+  <li><a href="#lacunar-infarcts" id="toc-lacunar-infarcts" class="nav-link" data-scroll-target="#lacunar-infarcts">Lacunar infarcts</a></li>
   <li><a href="#white-matter-hyperintensities" id="toc-white-matter-hyperintensities" class="nav-link" data-scroll-target="#white-matter-hyperintensities">White matter hyperintensities</a></li>
   <li><a href="#atrophy" id="toc-atrophy" class="nav-link" data-scroll-target="#atrophy">Atrophy</a></li>
   </ul></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   </ul>
-</nav>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="svd-score.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -157,8 +162,15 @@ div.csl-indent {
   <div class="quarto-title-meta-heading">Affiliation</div>
   
     <div class="quarto-title-meta-contents">
-    <p class="author">Andreas Gammelgaard Damsbo </p>
+    <p class="author"><a href="https://pure.au.dk/portal/en/persons/andreas-gammelgaard-damsbo(e3c4afce-3eba-4456-8b8b-2fd90775c87a).html">Andreas</a> <a href="https://orcid.org/0000-0002-7559-1154" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
   </div>
+    <div class="quarto-title-meta-contents">
+        <p class="affiliation">
+            <a href="https://www.en.auh.dk/departments/danish-stroke-centre/">
+            Danish Stroke Centre, AUH
+            </a>
+          </p>
+      </div>
     </div>
 
 <div class="quarto-title-meta">
@@ -167,7 +179,7 @@ div.csl-indent {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">January 2, 2023</p>
+      <p class="date">January 2, 2024</p>
     </div>
   </div>
   
@@ -177,9 +189,8 @@ div.csl-indent {
 
 </header>
 
-<p>Consensus paper</p>
-<section id="purpose" class="level1">
-<h1>Purpose</h1>
+<section id="purpose" class="level2">
+<h2 class="anchored" data-anchor-id="purpose">Purpose</h2>
 <p><strong>Primary:</strong> continuous scale for grading SVD burden, for possible use in current as well as historical data.</p>
 <p><strong>Secondary:</strong> risk stratification of new stroke, dementia; correlation to life style factors.</p>
 <div class="callout callout-style-default callout-caution callout-titled">
@@ -192,181 +203,182 @@ Only intended for research use currently
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>The following scoring system is not formally published and not peer-reviewed.</p>
+<p>The following scoring system is not formally published and has not been through peer-review.</p>
 </div>
 </div>
 </section>
-<section id="scoring" class="level1">
-<h1>Scoring</h1>
-<table class="table">
+<section id="scoring" class="level2">
+<h2 class="anchored" data-anchor-id="scoring">Scoring</h2>
+<table class="table-striped table-hover table">
+<caption>SVD score table</caption>
 <colgroup>
-<col style="width: 72%">
-<col style="width: 27%">
+<col style="width: 70%">
+<col style="width: 29%">
 </colgroup>
+<thead>
+<tr class="header">
+<th><strong>MRI features</strong></th>
+<th><strong>Raw SVD score value</strong></th>
+</tr>
+</thead>
 <tbody>
 <tr class="odd">
-<td><strong>MRI features</strong></td>
-<td><strong>Raw SVD score value</strong></td>
-</tr>
-<tr class="even">
 <td><strong>Number of microbleeds (<em>T2*/SWI</em>)</strong></td>
 <td></td>
 </tr>
+<tr class="even">
+<td>0</td>
+<td>0</td>
+</tr>
 <tr class="odd">
-<td>0</td>
-<td>0</td>
+<td>1</td>
+<td>1</td>
 </tr>
 <tr class="even">
-<td>1</td>
-<td>1</td>
-</tr>
-<tr class="odd">
 <td>2-4</td>
 <td>2</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>5-10</td>
 <td>3</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>&gt;10</td>
 <td>4</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><strong>Location of microbleeds – no points (<em>T2*/SWI</em>)</strong></td>
 <td></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>Lobar, deep, or infratentorial (choose one or more)</td>
 <td>L/D/I</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><strong>Superficiel siderose (<em>T2*/SWI</em>)</strong></td>
 <td></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>No siderosis</td>
 <td>0</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>1 sulcus</td>
 <td>1</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>&gt;1 sulcus</td>
 <td>2</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><strong>Lacunes (<em>FLAIR</em>)</strong></td>
 <td></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>0</td>
 <td>0</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>1-2</td>
 <td>1</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>3-5</td>
 <td>2</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>&gt;5</td>
 <td>3</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><strong>White matter hyperintensities – see Figure 1 (<em>FLAIR</em>)</strong></td>
 <td></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>Absent</td>
 <td>0</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>Punctate foci</td>
 <td>1</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>Beginning confluence</td>
 <td>2</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>Large confluent areas</td>
 <td>3</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><strong>Atrophy - see Figure 2 (<em>FLAIR/T1</em>)</strong></td>
 <td></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>No</td>
 <td>0</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>Mild</td>
 <td>1</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>Moderate</td>
 <td>2</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>Severe</td>
 <td>3</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><strong>Total SVD score</strong></td>
-<td><strong>0-16</strong></td>
+<td><strong>0-15</strong></td>
 </tr>
 </tbody>
 </table>
 </section>
-<section id="setting" class="level1">
-<h1>Setting</h1>
+<section id="setting" class="level2">
+<h2 class="anchored" data-anchor-id="setting">Setting</h2>
 <p>The scoring system is intended for use with acute MRI stroke scans. Scans are performed according to the acute stroke protocol at the given time of scan. Available sequences are DWI, ADC, 2D FLAIR, and T2* or SWI in our setting, but if available 3D FLAIR and T1 sequences should be used. Data capturing should reflect this, if data is later merged from different populations.</p>
 <p>Scoring is performed independently by trained neurologists. Inter-rate-reliability-measures are performed to ensure validity.</p>
 </section>
-<section id="definitions-on-biomarkers" class="level1">
-<h1>Definitions on biomarkers</h1>
+<section id="definitions-on-biomarkers" class="level2">
+<h2 class="anchored" data-anchor-id="definitions-on-biomarkers">Definitions on biomarkers</h2>
 <p>Definitions are mainly according to the STRIVE v1 criteria,<span class="citation" data-cites="wardlaw2013">(<a href="#ref-wardlaw2013" role="doc-biblioref">Wardlaw et al. 2013</a>)</span> with minor local specifications.</p>
-<section id="microbleeds" class="level2">
-<h2 class="anchored" data-anchor-id="microbleeds">Microbleeds</h2>
+<section id="microbleeds" class="level3">
+<h3 class="anchored" data-anchor-id="microbleeds">Microbleeds</h3>
 <p>Sequence: T2*/SWI</p>
 <p>Small (generally 2–5 mm in diameter, but sometimes up to 10 mm) areas of signal void with associated blooming seen on SWI-weighted MRI.</p>
 <p>Different cut-offs are used in different trials.<span class="citation" data-cites="akoudad2016">(<a href="#ref-akoudad2016" role="doc-biblioref">Akoudad et al. 2016</a>)</span> We try to register in a way, so that our analysis can be made similarly to other studies and to provide enough resolution.</p>
 <p>As discussions about the importance of location is ongoing,<span class="citation" data-cites="vernooij2008">(<a href="#ref-vernooij2008" role="doc-biblioref">Vernooij et al. 2008</a>)</span> we register if microbleeds are located lobar, deep, or infratentorial.</p>
 </section>
-<section id="superficial-siderosis" class="level2">
-<h2 class="anchored" data-anchor-id="superficial-siderosis">Superficial siderosis</h2>
+<section id="superficial-siderosis" class="level3">
+<h3 class="anchored" data-anchor-id="superficial-siderosis">Superficial siderosis</h3>
 <p>Sequence: T2*/SWI</p>
-<p>“Investigators should describe the location of siderosis (i.e., the number of sulci involved and in which lobes).”<span class="citation" data-cites="wardlaw2013">(<a href="#ref-wardlaw2013" role="doc-biblioref">Wardlaw et al. 2013</a>)</span> p.&nbsp;828.</p>
+<p>“Investigators should describe the location of siderosis (i.e., the number of sulci involved and in which lobes).”<span class="citation" data-cites="wardlaw2013">(<a href="#ref-wardlaw2013" role="doc-biblioref">Wardlaw et al. 2013, 828</a>)</span></p>
 </section>
-<section id="lacunes" class="level2">
-<h2 class="anchored" data-anchor-id="lacunes">Lacunes</h2>
+<section id="lacunar-infarcts" class="level3">
+<h3 class="anchored" data-anchor-id="lacunar-infarcts">Lacunar infarcts</h3>
 <p>Sequence: 2D/3D FLAIR</p>
-<p>“A round or ovoid, subcortical, fluid-filled cavity (signal similar to CSF) of between 3 mm and about 15 mm in diameter, consistent with a previous acute small subcortical infarct or haemorrhage in the territory of one perforating arteriole.”<span class="citation" data-cites="wardlaw2013">(<a href="#ref-wardlaw2013" role="doc-biblioref">Wardlaw et al. 2013</a>)</span> p.&nbsp;825)</p>
+<p>“A round or ovoid, subcortical, fluid-filled cavity (signal similar to CSF) of between 3 mm and about 15 mm in diameter, consistent with a previous acute small subcortical infarct or haemorrhage in the territory of one perforating arteriole.”<span class="citation" data-cites="wardlaw2013">(<a href="#ref-wardlaw2013" role="doc-biblioref">Wardlaw et al. 2013, 825</a>)</span></p>
 <p>Additionally: “We identified asymptomatic lacunar infarcts as sharply demarcated hyperintense lesions &lt;20 mm on T2-weighted images with corresponding hypointense lesions with a hyperintense rim on FLAIR. In lacunar stroke patients, the lesion could not be compatible with the clinical stroke.”<span class="citation" data-cites="huijts2013">(<a href="#ref-huijts2013" role="doc-biblioref">Huijts et al. 2013</a>)</span></p>
 </section>
-<section id="white-matter-hyperintensities" class="level2">
-<h2 class="anchored" data-anchor-id="white-matter-hyperintensities">White matter hyperintensities</h2>
+<section id="white-matter-hyperintensities" class="level3">
+<h3 class="anchored" data-anchor-id="white-matter-hyperintensities">White matter hyperintensities</h3>
 <p>Sequence: 2D/3D FLAIR</p>
 <p>The Fazekas subscale for deep white matter is used. The scale divides the white matter in periventricular and deep white matter, and each region is given a grade depending on the size and confluence of lesions.<span class="citation" data-cites="fazekas1987">(<a href="#ref-fazekas1987" role="doc-biblioref">Fazekas et al. 1987</a>)</span></p>
 <p>No regional differences is noted.<span class="citation" data-cites="degroot2000">(<a href="#ref-degroot2000" role="doc-biblioref">Groot et al. 2000</a>)</span> Scoring is performed with <a href="https://radiopaedia.org/cases/fazekas-scale-for-white-matter-lesions?lang=us">visual reference</a> from <a href="https://radiopaedia.org/">Radiopedia.org</a>.</p>
 </section>
-<section id="atrophy" class="level2">
-<h2 class="anchored" data-anchor-id="atrophy">Atrophy</h2>
+<section id="atrophy" class="level3">
+<h3 class="anchored" data-anchor-id="atrophy">Atrophy</h3>
 <p>Sequence: 2D/3D FLAIR or T1</p>
 <p>We follow definitions for the Global Cerebral Atrophy (GCA) score.<span class="citation" data-cites="harper2015">(<a href="#ref-harper2015" role="doc-biblioref">Harper et al. 2015</a>)</span></p>
-<p>A picture sample for reference is used, figure 1 in the reference above.</p>
-
-
-
+<p>A picture sample for reference is used.<span class="citation" data-cites="harper2015">(<a href="#ref-harper2015" role="doc-biblioref">Harper et al. 2015, fig. 1</a>)</span></p>
 </section>
 </section>
-
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
+<div id="refs" class="references csl-bib-body hanging-indent" role="list">
 <div id="ref-akoudad2016" class="csl-entry" role="listitem">
 Akoudad, Saloua, Frank J. Wolters, Anand Viswanathan, Renée F. de Bruijn, Aad van der Lugt, Albert Hofman, Peter J. Koudstaal, M. Arfan Ikram, and Meike W. Vernooij. 2016. <span>“Association of Cerebral Microbleeds With Cognitive Decline and Dementia.”</span> <em>JAMA neurology</em> 73 (8): 934–43. <a href="https://doi.org/10.1001/jamaneurol.2016.1017">https://doi.org/10.1001/jamaneurol.2016.1017</a>.
 </div>
@@ -388,7 +400,12 @@ Vernooij, M. W., A. van der Lugt, M. A. Ikram, P. A. Wielopolski, W. J. Niessen,
 <div id="ref-wardlaw2013" class="csl-entry" role="listitem">
 Wardlaw, Joanna M., Eric E. Smith, Geert J. Biessels, Charlotte Cordonnier, Franz Fazekas, Richard Frayne, Richard I. Lindley, et al. 2013. <span>“Neuroimaging Standards for Research into Small Vessel Disease and Its Contribution to Ageing and Neurodegeneration.”</span> <em>The Lancet Neurology</em> 12 (8): 822–38. <a href="https://doi.org/10.1016/S1474-4422(13)70124-8">https://doi.org/10.1016/S1474-4422(13)70124-8</a>.
 </div>
-</div></section></div></main> <!-- /main -->
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
