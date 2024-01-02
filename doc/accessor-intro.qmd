@@ -4,6 +4,7 @@ date: last-modified
 format: 
   html: default
   docx: default
+  pdf: default
 editor: visual
 toc: true
 ---
