@@ -1,14 +1,12 @@
 ---
-title: "SVD score instrument"
-date: 2023-01-02
-author: Andreas Gammelgaard Damsbo
+title: "Data capturing instrument"
+date: last-modified
 editor: visual
 toc: true
 bibliography: references.bib
 ---
 
 ```{r}
-#| echo: false
 readr::write_csv(REDCapR::redcap_metadata_read(redcap_uri = "https://redcap.au.dk/api/",token = keyring::key_get("SVD_REDCAP_API"))$data,here::here("data/svd-datadictionary.csv"))
 ```
 
@@ -18,12 +16,12 @@ Minimal necessary clinical data for scoring are pooled and uploaded to a
 separate data base.
 
 The scripts used are fairly trivial, but can serve as inspirational. The
-functions used can [be found here](R/functions.R).
+functions used can [be found
+here](https://raw.githubusercontent.com/agdamsbo/cSVD-burden-annotation-and-analysis-project/main/R/functions.R).
 
 The simple pipeline is as follows
 
 ```{r}
-#| eval: false
 source(here::here("R/functions.R"))
 ds |> # The data set retrieved from the relevant data base
   # filter_talos_site() |>
@@ -36,12 +34,13 @@ ds |> # The data set retrieved from the relevant data base
 All clinical data capturing for this project is performed with
 [REDCap](https://projectredcap.org/).
 
-Get our most recent [data dictionary here](data/svd-datadictionary.csv)
-to use in your own project. Note that the text on a few fields are in
-Danish.
+Get our most recent [data dictionary
+here](https://raw.githubusercontent.com/agdamsbo/cSVD-burden-annotation-and-analysis-project/main/data/svd-datadictionary.csv)
+to inspect. Note that the text on a few fields are in Danish.
 
 The dictionary can be previewed below:
 
 ```{r}
+#| eval: true
 readr::read_csv(here::here("data/svd-datadictionary.csv")) |> gt::gt()
 ```
