@@ -1,0 +1,59 @@
+---
+title: "Scoring workflow"
+date: last-modified
+format: 
+  html: default
+  pdf: default
+editor: visual
+---
+
+## Suggested workflow
+
+In REDCap:
+
+1.  Open the scoring overview in REDCap:
+    [link](https://redcap.au.dk/redcap_v13.7.21/DataEntry/record_home.php?pid=8420)
+
+2.  From the drop-down "**Choose an existing Record ID**", select your
+    first subject (allocated subjects should be consecutive).
+
+3.  Open the "SVD score" instrument to start capturing the score. If the
+    "dot" is yellow, the instrument already has been filled. Press the
+    "+"-sign to create a new version (mainly necessary for the
+
+4.  In the top of the instrument the patient CPR, name and admission
+    time is printed.
+
+In Citrix:
+
+5.  Open the remote Citrix access: [link](https://citrix.rm.dk)
+
+6.  Open the PACS module and look up the patient using the CPR number
+    from REDCap.
+
+7.  Please use the subject admission date and time as reference to
+    select the correct scan.
+
+8.  The scan might take a minute or two to load from the storage server.
+    A little patience is necessary. The first time, you can use this
+    time to arrange your program windows for optimal workflow. See
+    {#workflow-notes}.
+
+Back in REDCap:
+
+9.  When done filling out all fields, you can save the data and go
+    directly to the next subject:
+
+    On the right and at the end of the instrument, there are two blue
+    boxes. The top is "Save & Exit Form", the second have different
+    options to choose from by clicking the arrow on the right. Choose
+    "Save & Go To Next Record". Then repeat step 3-9.
+
+### Notes {#workflow-notes}
+
+-   During scoring, I (Andreas) had the PACS screen maximized on the
+    left side of a large, wide monitor, and REDCap on the right. PACS
+    has a menu on the right, and REDCap on the left, ensuring both are
+    centered on the screen to minimize mouse movements.
+-   The instrument in REDCap is organized by sequences corresponding to
+    how they are organized in PACS (T2\*/SWI and FLAIR).
