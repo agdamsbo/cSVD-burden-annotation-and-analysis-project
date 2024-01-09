@@ -8,7 +8,7 @@ website:
       - href: index.qmd
         text: Home
       - href: doc/assessor-intro.qmd
-        text: Assessor
+        text: Assessors
       - href: doc/down-to-work.qmd
         text: Scoring
       # - href: doc/status.qmd
@@ -16,9 +16,9 @@ website:
       - text: Resources
         menu:
         - href: doc/svd-score.qmd
-          text: Annotation
+          text: SVD scoring scale
         - href: doc/instrument.qmd
-          text: Capturing
+          text: REDCap data capture
 
   page-footer:
     center:
@@ -34,7 +34,7 @@ knitr:
     echo: false
 
 execute:
-  freeze: auto
+  freeze: false
   echo: false
   eval: false
 
@@ -43,17 +43,17 @@ editor:
     wrap: 72
     canonical: true
 
-author:
-  - name: Andreas
-    orcid: 0000-0002-7559-1154
-    email: andrlr@rm.dk
-    url: https://pure.au.dk/portal/en/persons/andreas-gammelgaard-damsbo(e3c4afce-3eba-4456-8b8b-2fd90775c87a).html
-    affiliations:
-      - ref: dsc
-affiliations:
-  - id: dsc
-    name: Danish Stroke Centre, AUH
-    department: Neurology
-    city: Aarhus
-    country: Denmark
-    url: https://www.en.auh.dk/departments/danish-stroke-centre/
+# author:
+#   - name: Andreas
+#     orcid: 0000-0002-7559-1154
+#     email: andrlr@rm.dk
+#     url: https://pure.au.dk/portal/en/persons/andreas-gammelgaard-damsbo(e3c4afce-3eba-4456-8b8b-2fd90775c87a).html
+#     affiliations:
+#       - ref: dsc
+# affiliations:
+#   - id: dsc
+#     name: Danish Stroke Centre, AUH
+#     department: Neurology
+#     city: Aarhus
+#     country: Denmark
+#     url: https://www.en.auh.dk/departments/danish-stroke-centre/

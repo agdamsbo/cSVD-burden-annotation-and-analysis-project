@@ -1,7 +1,12 @@
 ---
 title: "SVD burden annotation project"
 format: html
-about: jolla
+about: 
+  template: jolla
+  links: 
+    - href: "mailto:andrlr@rm.dk"
+      icon: "envelope"
+      text: Contact
 ---
 
 ## About
