@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Andreas">
-<meta name="dcterms.date" content="2024-01-02">
+<meta name="dcterms.date" content="2024-01-09">
 
-<title>cSVD burden project - Scoring workflow</title>
+<title>cSVD burden project - Allocation and workflow</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -87,17 +87,28 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../doc/svd-score.html" rel="" target="">
- <span class="menu-text">Annotation</span></a>
+    <a class="nav-link" href="../doc/assessor-intro.html" rel="" target="">
+ <span class="menu-text">Assessor</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../doc/instrument.html" rel="" target="">
- <span class="menu-text">Capturing</span></a>
+    <a class="nav-link active" href="../doc/down-to-work.html" rel="" target="" aria-current="page">
+ <span class="menu-text">Scoring</span></a>
   </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../doc/accessor-intro.html" rel="" target="">
- <span class="menu-text">Accessors</span></a>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-resources" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
+ <span class="menu-text">Resources</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-resources">    
+        <li>
+    <a class="dropdown-item" href="../doc/svd-score.html" rel="" target="">
+ <span class="dropdown-text">Annotation</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="../doc/instrument.html" rel="" target="">
+ <span class="dropdown-text">Capturing</span></a>
+  </li>  
+    </ul>
+  </li>
 </ul>
             <div class="quarto-navbar-tools ms-auto">
 </div>
@@ -111,13 +122,13 @@ ul.task-list li input[type="checkbox"] {
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         
-    <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="score-flow.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></div>
+    <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="down-to-work.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Scoring workflow</h1>
+<h1 class="title">Allocation and workflow</h1>
 </div>
 
 
@@ -143,7 +154,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">January 2, 2024</p>
+      <p class="date">January 9, 2024</p>
     </div>
   </div>
   
@@ -153,29 +164,54 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<section id="suggested-workflow" class="level2">
-<h2 class="anchored" data-anchor-id="suggested-workflow">Suggested workflow</h2>
-<p>In REDCap:</p>
+<section id="sec-allocations" class="level2">
+<h2 class="anchored" data-anchor-id="sec-allocations">Allocations</h2>
+<div class="cell">
+<div class="cell-output-display">
+<table class="table table-sm table-striped small">
+<caption>Allocation of subject IDs </caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">accessor</th>
+<th style="text-align: left;">IDs</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">all</td>
+<td style="text-align: left;">svd_1-10</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">andlau</td>
+<td style="text-align: left;">svd_11-50</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="sec-suggested-workflow" class="level2">
+<h2 class="anchored" data-anchor-id="sec-suggested-workflow">Suggested workflow</h2>
+<p><strong>In REDCap:</strong></p>
 <ol type="1">
 <li><p>Open the scoring overview in REDCap: <a href="https://redcap.au.dk/redcap_v13.7.21/DataEntry/record_home.php?pid=8420">link</a></p></li>
 <li><p>From the drop-down “<strong>Choose an existing Record ID</strong>”, select your first subject (allocated subjects should be consecutive).</p></li>
-<li><p>Open the “SVD score” instrument to start capturing the score. If the “dot” is yellow, the instrument already has been filled. Press the “+”-sign to create a new version (mainly necessary for the</p></li>
-<li><p>In the top of the instrument the patient CPR, name and admission time is printed.</p></li>
+<li><p>Open the “SVD score” instrument to start capturing the score. If the “dot” is yellow, the instrument already has been filled. Press the “+”-sign to create a new version (mainly necessary during the inter-rater-reliability testing, as each subject is only scored once)</p></li>
+<li><p>In the top of the instrument the patient CPR, name and admission time is printed as well as assigned assessor and link to Citrix.</p></li>
 </ol>
-<p>In Citrix:</p>
+<p><strong>In Citrix:</strong></p>
 <ol start="5" type="1">
-<li><p>Open the remote Citrix access: <a href="https://citrix.rm.dk">link</a></p></li>
-<li><p>Open the PACS module and look up the patient using the CPR number from REDCap.</p></li>
-<li><p>Please use the subject admission date and time as reference to select the correct scan.</p></li>
-<li><p>The scan might take a minute or two to load from the storage server. A little patience is necessary. The first time, you can use this time to arrange your program windows for optimal workflow. See {#workflow-notes}.</p></li>
+<li><p>Open the “Billeddiagnostik PACS” module (find it under “APPS” and “star” it the first time) and look up the patient using the CPR number copied from REDCap.</p></li>
+<li><p>Please use the subject admission date and time as reference to select the correct scan and the exact date and time of the scan (fields are pre-filled with admission date and time).</p></li>
+<li><p>The scan might take a minute or two to load from the storage server. A little patience is necessary. The first time, you can use this time to arrange your program windows for optimal workflow. See the notes below.</p></li>
 </ol>
-<p>Back in REDCap:</p>
-<ol start="9" type="1">
+<p><strong>Back in REDCap:</strong></p>
+<ol start="8" type="1">
 <li><p>When done filling out all fields, you can save the data and go directly to the next subject:</p>
-<p>On the right and at the end of the instrument, there are two blue boxes. The top is “Save &amp; Exit Form”, the second have different options to choose from by clicking the arrow on the right. Choose “Save &amp; Go To Next Record”. Then repeat step 3-9.</p></li>
+<p>On the right and at the end of the instrument, there are two blue boxes. The top is “Save &amp; Exit Form”, the second have different options to choose from by clicking the arrow on the right. Choose “Save &amp; Go To Next Record”. Then repeat step 3-8.</p></li>
 </ol>
-<section id="workflow-notes" class="level3">
-<h3 class="anchored" data-anchor-id="workflow-notes">Notes</h3>
+<section id="sec-notes" class="level3">
+<h3 class="anchored" data-anchor-id="sec-notes">Notes</h3>
 <ul>
 <li>During scoring, I (Andreas) had the PACS screen maximized on the left side of a large, wide monitor, and REDCap on the right. PACS has a menu on the right, and REDCap on the left, ensuring both are centered on the screen to minimize mouse movements.</li>
 <li>The instrument in REDCap is organized by sequences corresponding to how they are organized in PACS (T2*/SWI and FLAIR).</li>

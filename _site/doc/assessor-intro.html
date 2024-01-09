@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Andreas">
-<meta name="dcterms.date" content="2024-01-02">
+<meta name="dcterms.date" content="2024-01-09">
 
-<title>cSVD burden project - Accessor introduction</title>
+<title>cSVD burden project - Assessor information</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -87,17 +87,28 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../doc/svd-score.html" rel="" target="">
- <span class="menu-text">Annotation</span></a>
+    <a class="nav-link active" href="../doc/assessor-intro.html" rel="" target="" aria-current="page">
+ <span class="menu-text">Assessor</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../doc/instrument.html" rel="" target="">
- <span class="menu-text">Capturing</span></a>
+    <a class="nav-link" href="../doc/down-to-work.html" rel="" target="">
+ <span class="menu-text">Scoring</span></a>
   </li>  
-  <li class="nav-item">
-    <a class="nav-link active" href="../doc/accessor-intro.html" rel="" target="" aria-current="page">
- <span class="menu-text">Accessors</span></a>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-resources" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
+ <span class="menu-text">Resources</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-resources">    
+        <li>
+    <a class="dropdown-item" href="../doc/svd-score.html" rel="" target="">
+ <span class="dropdown-text">Annotation</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="../doc/instrument.html" rel="" target="">
+ <span class="dropdown-text">Capturing</span></a>
+  </li>  
+    </ul>
+  </li>
 </ul>
             <div class="quarto-navbar-tools ms-auto">
 </div>
@@ -119,14 +130,14 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#participation" id="toc-participation" class="nav-link" data-scroll-target="#participation">Participation</a></li>
   <li><a href="#game-plan" id="toc-game-plan" class="nav-link" data-scroll-target="#game-plan">Game plan</a></li>
   </ul>
-<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="accessor-intro.docx"><i class="bi bi-file-word"></i>MS Word</a></li><li><a href="accessor-intro.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="assessor-intro.docx"><i class="bi bi-file-word"></i>MS Word</a></li><li><a href="assessor-intro.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Accessor introduction</h1>
+<h1 class="title">Assessor information</h1>
 </div>
 
 
@@ -152,7 +163,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">January 2, 2024</p>
+      <p class="date">January 9, 2024</p>
     </div>
   </div>
   
@@ -168,20 +179,20 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="annotation-and-capturing" class="level2">
 <h2 class="anchored" data-anchor-id="annotation-and-capturing">Annotation and capturing</h2>
-<p>No widely used scoring system exists, that considers all elements of SVD. The Fazekas score is widely used, but only accounts for white matter hyperintensities (WMH).</p>
+<p>No widely used scoring system exists, that considers all elements of SVD on MRI. The Fazekas score is widely used, but only accounts for white matter hyperintensities (WMH).</p>
 <p>Based on existing studies, <a href="https://agdamsbo.github.io/cSVD-burden-annotation-and-analysis-project/doc/svd-score.html">we have developed a scoring tool for this purpose</a>, relying on FLAIR and T2*/SWI sequences from the acute scans. We are interested in microbleeds, superficial siderosis, previous lacunar infarcts, white matter hyperintensities, and atrophy.</p>
 <p>We have created a minimal registration tool in REDCap, that will later be enriched with metadata on the scans.</p>
 </section>
 <section id="participation" class="level2">
 <h2 class="anchored" data-anchor-id="participation">Participation</h2>
 <p>I want to invite you all to participate in this project. I will conduct a short teaching session on the material (see later), and you will be assigned a set number of subjects to evaluate.</p>
-<p>The project will run in two phases. In total I hope to have around 1000 subjects scored. Depending on how many accessors, ready to help, the math is pretty clear. The expected time use pr subject is 5-15 minutes when everything is set up.</p>
+<p>The project will run in two phases. In total I hope to have around 1000 subjects scored. Depending on how many assessors are ready to help, the math is pretty clear. The expected time use pr subject is 2-10 minutes when everything is set up.</p>
 <p>What you get for helping out:</p>
 <ul>
 <li><p>Role as co-author on the first paper based on the data and possibly participate on later publications (normal criteria for participation)</p></li>
 <li><p>Extensive experience evaluating SVD in acute stroke patients which will benefit you and your patients in the future</p></li>
 <li><p>A big thank you!</p></li>
-<li><p>Access to all source code used for data acquisition and analyses (shared under an open source license)</p></li>
+<li><p>Assess to all source code used for data acquisition and analyses (shared under an open source license)</p></li>
 </ul>
 </section>
 <section id="game-plan" class="level2">
@@ -189,9 +200,9 @@ ul.task-list li input[type="checkbox"] {
 <p>When I know who is participating, I will arrange for a short teaching session to go through the materials and giving a few examples. Then I expect the work to go as follows:</p>
 <ul>
 <li><p>Everyone scores the same 10 subjects, and I will calculate inter-rater-reliability statistics. If measures are not satisfying I will go through instructions again with some added feedback, and well have to try again. If/when satisfied,</p></li>
-<li><p>I will allocate a specific number of subjects to each of you accessors. You can score your allocated subjects on your personal computer (please ensure adequate lightning conditions) and at any time you like. You’ll need access to Citrix and PACS. I have created a few suggestions and notes on an optimal workflow <a href="https://agdamsbo.github.io/cSVD-burden-annotation-and-analysis-project/doc/score-flow.html">here</a>.</p></li>
+<li><p>I will allocate a specific number of subjects to each assessor (see <a href="../doc/down-to-work.html#sec-allocations">Allocations</a>). You can score your allocated subjects on your personal computer (please ensure adequate lightning conditions) and at any time you like. You’ll need assess to Citrix and PACS. Below is the suggested optimal workflow to speed up annotation (see <a href="../doc/down-to-work.html#sec-suggested-workflow">Workflow</a>).</p></li>
 <li><p>During the scoring process I will be able to follow the progress and check-in with you to provide help if needed. And I’ll make sure to create a few competitions along the way.</p></li>
-<li><p>When all participants are scored, I will be performing analyses and send you the draft manuscript for comments.</p></li>
+<li><p>When all participants are scored, I will be performing analyses and send the draft manuscript for comments.</p></li>
 </ul>
 
 

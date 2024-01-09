@@ -42,5 +42,6 @@ The dictionary can be previewed below:
 
 ```{r}
 #| eval: true
+#| message: false
 readr::read_csv(here::here("data/svd-datadictionary.csv")) |> gt::gt()
 ```

@@ -7,12 +7,19 @@ website:
     left:
       - href: index.qmd
         text: Home
-      - href: doc/svd-score.qmd
-        text: Annotation
-      - href: doc/instrument.qmd
-        text: Capturing
-      - href: doc/accessor-intro.qmd
-        text: Accessors
+      - href: doc/assessor-intro.qmd
+        text: Assessor
+      - href: doc/down-to-work.qmd
+        text: Scoring
+      # - href: doc/status.qmd
+      #   text: Status
+      - text: Resources
+        menu:
+        - href: doc/svd-score.qmd
+          text: Annotation
+        - href: doc/instrument.qmd
+          text: Capturing
+
   page-footer:
     center:
       - text: "License: CC BY 4.0 {{< fa brands creative-commons >}} {{< fa brands creative-commons-by >}}"

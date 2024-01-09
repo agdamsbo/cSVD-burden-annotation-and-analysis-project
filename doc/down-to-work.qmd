@@ -1,0 +1,24 @@
+---
+title: "Allocation and workflow"
+date: last-modified
+format: 
+  html: default
+  pdf: default
+editor: visual
+---
+
+## Allocations {#sec-allocations}
+
+```{r}
+#| eval: true
+#| echo: false
+#| label: allocation-table
+#| tbl-cap: Allocation of subject IDs
+read.csv(here::here("data/allocation.csv")) |>
+  dplyr::transmute(accessor,
+    IDs = paste0("svd_", start, "-", stop)
+  ) |>
+  knitr::kable()
+```
+
+{{< include _score-flow.qmd >}}
