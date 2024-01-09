@@ -155,8 +155,8 @@ clean_record_id <- function(data, remove = "svd_") {
     dplyr::arrange(record_id)
 }
 
-remotes::install_github("agdamsbo/REDCapCAST")
-library(REDCapCAST)
+# remotes::install_github("agdamsbo/REDCapCAST")
+# library(REDCapCAST)
 
 #' Read single REDCap instrument
 #'
