@@ -23,7 +23,8 @@ Imports:
     keyring,
     quarto,
     knitr,
-    rmarkdown
+    rmarkdown,
+    dplyr
 Encoding: UTF-8
 License: CC BY 4.0
 URL: https://github.com/agdamsbo/cSVD-burden-annotation-and-analysis-project
