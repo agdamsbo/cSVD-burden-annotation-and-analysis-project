@@ -16,15 +16,14 @@ Suggests:
     Hmisc,
     tidycomm,
     REDCapR,
-    usethis,
-    tidyverse
+    usethis
 Imports: 
     here,
     keyring,
     quarto,
     knitr,
     rmarkdown,
-    dplyr
+    tidyverse
 Encoding: UTF-8
 License: CC BY 4.0
 URL: https://github.com/agdamsbo/cSVD-burden-annotation-and-analysis-project
