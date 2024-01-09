@@ -37,11 +37,3 @@ All clinical data capturing for this project is performed with
 Get our most recent [data dictionary
 here](https://raw.githubusercontent.com/agdamsbo/cSVD-burden-annotation-and-analysis-project/main/data/svd-datadictionary.csv)
 to inspect. Note that the text on a few fields are in Danish.
-
-The dictionary can be previewed below:
-
-```{r}
-#| eval: true
-#| message: false
-readr::read_csv(here::here("data/svd-datadictionary.csv")) |> gt::gt()
-```
