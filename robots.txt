@@ -1,1 +1,1 @@
-Sitemap: https://github.com/agdamsbo/cSVD-burden-annotation-and-analysis-project/sitemap.xml
+Sitemap: https://agdamsbo.github.io/cSVD-burden-annotation-and-analysis-project/sitemap.xml
