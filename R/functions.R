@@ -7,7 +7,6 @@
 #' @examples
 #' data <- import_talos()
 #' skimr::skim(data)
-#' ds <- import_talos()
 import_talos <- function(key = "TALOS_REDCAP_API",
                          vars = c("record_id", "inkl_rnumb", "cpr", "talos_inkl03x", "talos_basis02a", "talos_basis02b", "basis_sys_site")) {
   REDCapR::redcap_read(
@@ -101,8 +100,8 @@ modify_data <- function(data,
 #' ds |>
 #'   filter_talos_site() |>
 #'   modify_data() |>
-#'   write2new_db()
-write2new_db <- function(data, key = "SVD_REDCAP_API") {
+#'   write2db()
+write2db <- function(data, key = "SVD_REDCAP_API") {
   REDCapR::redcap_write(
     redcap_uri = "https://redcap.au.dk/api/",
     token = keyring::key_get(key),
@@ -155,9 +154,6 @@ clean_record_id <- function(data, remove = "svd_") {
     dplyr::arrange(record_id)
 }
 
-# remotes::install_github("agdamsbo/REDCapCAST")
-# library(REDCapCAST)
-
 #' Read single REDCap instrument
 #'
 #' @param key API key
@@ -177,7 +173,7 @@ read_instrument <- function(key = "SVD_REDCAP_API", instrument = "svd_score", ra
 }
 
 
-#' Title
+#' Cleaning data for IRR calculation
 #'
 #' @param key
 #' @param instrument
@@ -215,10 +211,31 @@ inter_rater_data <- function(data) {
 #' @export tibble
 #'
 #' @examples
-#' irr_sample |> inter_rater()
+#' irr_sample |> inter_rater_calc()
 #' read_instrument() |>
 #'   inter_rater_data() |>
-#'   inter_rater()
-inter_rater <- function(data) {
+#'   inter_rater_calc()
+inter_rater_calc <- function(data) {
   data |> tidycomm::test_icr(unit_var = record_id, coder_var = svd_user, fleiss_kappa = TRUE)
 }
+
+#' UPload assessor allocation
+#'
+#' @param data
+#'
+#' @return
+#' @export
+#'
+#' @examples
+#' format_assessors() |> write2db()
+format_assessors <- function(path="data/allocation.csv"){
+  ds <- read.csv(here::here(path))
+
+  seq_len(nrow(ds)) |> lapply(function(x){
+    ds[x,] |> dplyr::tibble(record_id=paste0("svd_",seq(start,stop)),
+                       allocated_assessor=assessor) |>
+      dplyr::select(record_id,allocated_assessor)
+  }) |> dplyr::bind_rows()
+
+}
+
