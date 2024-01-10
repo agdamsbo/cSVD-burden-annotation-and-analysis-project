@@ -59,10 +59,12 @@ redcap_get_n <- function(key = "SVD_REDCAP_API") {
 #' @param key destination project API key name
 #'
 #' @return tibble with modified data
-#' ds |> modify_data(index=0)
+#' @examples
+#' ds |> modify_data(index=0,trial="TALOS")
+#' ds |> modify_data(trial="RESIST")
 modify_data <- function(data,
                         index = redcap_get_n(),
-                        trial = "TALOS",
+                        trial,
                         key = "SVD_REDCAP_API",
                         id.var = inkl_rnumb,
                         cpr.var = cpr,
@@ -78,17 +80,12 @@ modify_data <- function(data,
       trial_id = {{ id.var }},
       cpr = {{ cpr.var }},
       name = {{ name.var }},
-      index_date = lubridate::ymd({{ date.var }}),
+      index_date = format(as.POSIXct({{ date.var }}), "%Y-%m-%d"),
       index_time = format(as.POSIXct({{ time.var }}), "%H:%M"),
-      trial_name = dplyr::case_match(
-        trial,
-        "TALOS" ~ 1,
-        "RESIST" ~ 2
-      ),
+      trial_name = trial,
       basis_complete = 2
     )
 }
-
 
 #' Write data to REDCap db
 #'
@@ -148,10 +145,9 @@ irr_sample <- function() {
 #'
 #' @examples
 #' irr_sample() |> clean_record_id()
-clean_record_id <- function(data, remove = "svd_") {
+arrange_record_id <- function(data, remove = "svd_") {
   data |>
-    dplyr::mutate(record_id = stringr::str_remove(record_id, remove)) |>
-    dplyr::arrange(record_id)
+    dplyr::arrange(as.numeric(stringr::str_remove(record_id, remove)))
 }
 
 #' Read single REDCap instrument
@@ -185,7 +181,7 @@ read_instrument <- function(key = "SVD_REDCAP_API", instrument = "svd_score", ra
 #' read_instrument() |> inter_rater_data()
 inter_rater_data <- function(data) {
   data |>
-    clean_record_id() |>
+    arrange_record_id() |>
     dplyr::filter(svd_perf == 1) |>
     dplyr::select(
       record_id,
