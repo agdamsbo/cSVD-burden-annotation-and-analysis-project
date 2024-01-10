@@ -15,7 +15,7 @@ editor: visual
 #| label: allocation-table
 #| tbl-cap: Allocation of subject IDs
 read.csv(here::here("data/allocation.csv")) |>
-  dplyr::transmute(accessor,
+  dplyr::transmute(assessor,
     IDs = paste0("svd_", start, "-", stop)
   ) |>
   knitr::kable()
