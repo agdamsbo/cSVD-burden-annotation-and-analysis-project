@@ -73,13 +73,13 @@ expect the work to go as follows:
     [Allocations](down-to-work.qmd#sec-allocations)). You can score your
     allocated subjects on your personal computer (please ensure adequate
     lightning conditions) and at any time you like. You'll need assess
-    to Citrix and PACS. Below is the suggested optimal workflow to speed
-    up annotation (see
-    [Workflow](down-to-work.qmd#sec-suggested-workflow)).
+    to Citrix and PACS (see
+    [Workflow](down-to-work.qmd#sec-suggested-workflow) for a suggested
+    optimal workflow).
 
 -   During the scoring process I will be able to follow the progress and
     check-in with you to provide help if needed. And I'll make sure to
     create a few competitions along the way.
 
--   When all participants are scored, I will be performing analyses and
+-   When all participants are scored, I will be running analyses and
     send the draft manuscript for comments.
