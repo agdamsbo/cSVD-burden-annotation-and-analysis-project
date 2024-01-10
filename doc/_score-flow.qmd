@@ -2,20 +2,23 @@
 
 **In REDCap:**
 
-1.  Open the scoring overview in REDCap:
-    [link](https://redcap.au.dk/redcap_v13.7.21/DataEntry/record_home.php?pid=8420)
+1.  Login to AU REDCap, open the "SVD-burden POOL" project and go to
+    "**Add / Edit Records**" ([just follow this
+    link](https://redcap.au.dk/redcap_v13.7.21/DataEntry/record_home.php?pid=8420))
 
 2.  From the drop-down "**Choose an existing Record ID**", select your
-    first subject (allocated subjects should be consecutive).
+    first subject (allocated subjects are in consecutive order)
 
-3.  Open the "SVD score" instrument to start capturing the score. If the
-    "dot" is yellow, the instrument already has been filled. Press the
-    "+"-sign to create a new version (mainly necessary during the
-    inter-rater-reliability testing, as each subject is only scored
-    once)
+3.  Open the "SVD score" instrument to start capturing the score.
 
-4.  In the top of the instrument the patient CPR, name and admission
-    time is printed as well as assigned assessor and link to Citrix.
+    -   If the "dot" is colored, the instrument already has been filled.
+        Press the "+"-sign to create a new version (mainly necessary
+        during the inter-rater-reliability testing, as each subject is
+        only scored once)
+
+4.  In the top of the instrument, the patient CPR, name and admission
+    time is printed as well as assessor allocated (should be you) and
+    link to Citrix.
 
 **In Citrix:**
 
