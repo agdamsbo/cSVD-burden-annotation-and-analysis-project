@@ -32,24 +32,23 @@
 
 7.  The scan might take a minute or two to load from the storage server.
     A little patience is necessary. The first time, you can use this
-    time to arrange your program windows for optimal workflow. See the
-    notes below.
+    time to arrange your program windows for optimal workflow.
 
-**Back in REDCap:**
+    -   Maximise the "PACS" window on the left half of yuor screen and
+        "REDCap" on the left (to have controls line up in the middle and
+        minimize cursor movement)
+
+        Note that the REDCap is organized by MRI sequences (T2\*/SWI and
+        FLAIR) corresponding to how they are organized in PACS. The
+        relevant sequences are usually found at the buttom of the list
+        in PACS.
+
+**In REDCap:**
 
 8.  When done filling out all fields, you can save the data and go
-    directly to the next subject:
+    directly to the next subject by clicking "Save & Go To Next Record"
 
-    On the right and at the end of the instrument, there are two blue
-    boxes. The top is "Save & Exit Form", the second have different
-    options to choose from by clicking the arrow on the right. Choose
-    "Save & Go To Next Record". Then repeat step 3-8.
-
-### Notes {#sec-notes}
-
--   During scoring, I (Andreas) had the PACS screen maximized on the
-    left side of a large, wide monitor, and REDCap on the right. PACS
-    has a menu on the right, and REDCap on the left, ensuring both are
-    centered on the screen to minimize mouse movements.
--   The instrument in REDCap is organized by sequences corresponding to
-    how they are organized in PACS (T2\*/SWI and FLAIR).
+    -   On the right and at the end of the instrument, there are two
+        blue boxes. The top is "Save & Exit Form", the second have
+        different options to choose from by clicking the arrow on the
+        right. Choose "Save & Go To Next Record". Then repeat step 3-8.
