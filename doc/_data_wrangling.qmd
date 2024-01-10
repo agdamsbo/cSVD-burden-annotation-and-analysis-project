@@ -1,0 +1,43 @@
+---
+titel: "Wrangling"
+---
+
+```{r}
+source(here::here("R/functions.R"))
+```
+
+# Database upload
+
+## Reupload original TALOS data
+
+```{r}
+ds <- import_talos() |>
+  filter_talos_site(site = "10015") |>
+  modify_data(index = 0)
+```
+
+Checking everything looks good
+
+```{r}
+skimr::skim(ds)
+```
+
+Upload
+
+```{r}
+# ds |> write2db()
+```
+
+# Inter-rater reliability testing
+
+```{r}
+read_instrument(key = "SVD_REDCAP_API", instrument = "svd_score") |>
+  inter_rater_data() |>
+  inter_rater_calc()
+```
+
+# Update assessor allocations
+
+```{r}
+format_assessors() |> write2db()
+```
