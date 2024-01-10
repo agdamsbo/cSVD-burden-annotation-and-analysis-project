@@ -11,28 +11,34 @@ source(here::here("R/functions.R"))
 ## Reupload original TALOS data
 
 ```{r}
-ds <- import_talos() |>
+ds <- import_talos() 
+ds_mod <- ds |>
   filter_talos_site(site = "10015") |>
-  modify_data(index = 0)
+  modify_data(trial = "TALOS", index = 0)
 ```
 
 Checking everything looks good
 
 ```{r}
-skimr::skim(ds)
+skimr::skim(ds_mod)
 ```
 
 Upload
 
 ```{r}
-# ds |> write2db()
+#| eval: false
+ds_mod |> write2db()
 ```
 
 # Inter-rater reliability testing
 
 ```{r}
-read_instrument(key = "SVD_REDCAP_API", instrument = "svd_score") |>
-  inter_rater_data() |>
+ds_irr <- read_instrument(key = "SVD_REDCAP_API", instrument = "svd_score")|> 
+  inter_rater_data()
+
+skimr::skim(ds_irr)
+
+ds_irr  |>
   inter_rater_calc()
 ```
 
