@@ -20,7 +20,7 @@
     time is printed as well as assessor allocated (should be you) and
     link to Citrix.
 
-**In Citrix:**
+**In Citrix/PACS:**
 
 5.  Open the "Billeddiagnostik PACS" module (find it under "APPS" and
     "star" it the first time) and look up the patient using the CPR
