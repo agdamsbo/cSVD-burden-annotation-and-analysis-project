@@ -27,7 +27,7 @@ website:
         href: https://github.com/agdamsbo/cSVD-burden-annotation-and-analysis-project
   page-footer:
     center:
-      - text: "License: CC BY 4.0 {{< fa brands creative-commons >}} {{< fa brands creative-commons-by >}}"
+      - text: "License: CC BY 4.0"
         href: LICENSE.html
 
 format:
