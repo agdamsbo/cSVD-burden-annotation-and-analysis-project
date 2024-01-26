@@ -2,13 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
+<meta name="generator" content="quarto-1.4.549">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2024-01-10">
 
-<title>cSVD burden project - Assessor information</title>
+<title>cSVD burden project - Project plan</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -46,7 +45,13 @@ ul.task-list li input[type="checkbox"] {
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -55,6 +60,7 @@ ul.task-list li input[type="checkbox"] {
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
@@ -64,13 +70,13 @@ ul.task-list li input[type="checkbox"] {
 
 </head>
 
-<body class="nav-fixed">
+<body class="nav-fixed fullcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container">
+      <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">cSVD burden project</span>
     </a>
@@ -82,28 +88,28 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../index.html" rel="" target="">
- <span class="menu-text">Home</span></a>
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="../doc/assessor-intro.html" rel="" target="" aria-current="page">
- <span class="menu-text">Assessors</span></a>
+    <a class="nav-link active" href="../doc/plan.html" aria-current="page"> 
+<span class="menu-text">Project plan</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../doc/down-to-work.html" rel="" target="">
- <span class="menu-text">Scoring</span></a>
+    <a class="nav-link" href="../doc/down-to-work.html"> 
+<span class="menu-text">Annotation</span></a>
   </li>  
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-resources" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-resources" role="button" data-bs-toggle="dropdown" aria-expanded="false">
  <span class="menu-text">Resources</span>
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-resources">    
         <li>
-    <a class="dropdown-item" href="../doc/svd-score.html" rel="" target="">
+    <a class="dropdown-item" href="../doc/svd-score.html">
  <span class="dropdown-text">SVD scoring scale</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../doc/instrument.html" rel="" target="">
+    <a class="dropdown-item" href="../doc/instrument.html">
  <span class="dropdown-text">REDCap data capture</span></a>
   </li>  
     </ul>
@@ -111,14 +117,14 @@ ul.task-list li input[type="checkbox"] {
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/agdamsbo/cSVD-burden-annotation-and-analysis-project" rel="" target=""><i class="bi bi-github" role="img">
+    <a class="nav-link" href="https://github.com/agdamsbo/cSVD-burden-annotation-and-analysis-project"> <i class="bi bi-github" role="img">
 </i> 
- <span class="menu-text"></span></a>
+<span class="menu-text"></span></a>
   </li>  
 </ul>
-            <div class="quarto-navbar-tools">
-</div>
           </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
+</div>
       </div> <!-- /container-fluid -->
     </nav>
 </header>
@@ -126,24 +132,13 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#motivation" id="toc-motivation" class="nav-link active" data-scroll-target="#motivation">Motivation</a></li>
-  <li><a href="#annotation-and-capturing" id="toc-annotation-and-capturing" class="nav-link" data-scroll-target="#annotation-and-capturing">Annotation and capturing</a></li>
-  <li><a href="#participation" id="toc-participation" class="nav-link" data-scroll-target="#participation">Participation</a></li>
-  <li><a href="#game-plan" id="toc-game-plan" class="nav-link" data-scroll-target="#game-plan">Game plan</a></li>
-  </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/agdamsbo/cSVD-burden-annotation-and-analysis-project/blob/main/doc/assessor-intro.qmd" class="toc-action">View source</a></p><p><a href="https://github.com/agdamsbo/cSVD-burden-annotation-and-analysis-project/issues/new" class="toc-action">Report an issue</a></p></div></div><div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="assessor-intro.docx"><i class="bi bi-file-word"></i>MS Word</a></li><li><a href="assessor-intro.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
-    </div>
+    
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Assessor information</h1>
+<h1 class="title">Project plan</h1>
 </div>
 
 
@@ -151,46 +146,20 @@ ul.task-list li input[type="checkbox"] {
 <div class="quarto-title-meta">
 
     
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">January 10, 2024</p>
-    </div>
-  </div>
   
     
   </div>
   
 
+
 </header>
 
-<section id="motivation" class="level2">
-<h2 class="anchored" data-anchor-id="motivation">Motivation</h2>
-<p>SVD in the brain is still uncharted territory. We have two large datasets (possibly supplemented with additional projects) on acute stroke patients that we have the opportunity to merge and link with data from MRI scans. The first project is to investigate the relationship between various lifestyle factors and the degree of SVD among stroke patients. We also plan to use the data for other projects in the future.</p>
-</section>
-<section id="annotation-and-capturing" class="level2">
-<h2 class="anchored" data-anchor-id="annotation-and-capturing">Annotation and capturing</h2>
-<p>No widely used scoring system exists, that considers all elements of SVD on MRI. The Fazekas score is widely used, but only accounts for white matter hyperintensities (WMH).</p>
-<p>Based on existing studies, <a href="https://agdamsbo.github.io/cSVD-burden-annotation-and-analysis-project/doc/svd-score.html">we have developed a scoring tool for this purpose</a>, relying on FLAIR and T2*/SWI sequences from the acute scans. We are interested in microbleeds, superficial siderosis, previous lacunar infarcts, white matter hyperintensities, and atrophy.</p>
-<p>We have created a minimal registration tool in REDCap, that will later be enriched with metadata on the scans.</p>
-</section>
-<section id="participation" class="level2">
-<h2 class="anchored" data-anchor-id="participation">Participation</h2>
-<p>I want to invite you all to participate in this project. I will conduct a short teaching session on the material (see later), and you will be assigned a set number of subjects to evaluate.</p>
-<p>The project will run in two phases. In total I hope to have around 1000 subjects scored. Depending on how many assessors are ready to help, the math is pretty clear. The expected time use pr subject is 2-10 minutes when everything is set up.</p>
-<p>What you get for helping out:</p>
-<ul>
-<li><p>Role as co-author on the first paper based on the data and possibly participate on later publications (normal criteria for participation)</p></li>
-<li><p>Extensive experience evaluating SVD in acute stroke patients which will benefit you and your patients in the future</p></li>
-<li><p>A big thank you!</p></li>
-<li><p>Assess to all source code used for data acquisition and analyses (shared under an open source license)</p></li>
-</ul>
-</section>
-<section id="game-plan" class="level2">
-<h2 class="anchored" data-anchor-id="game-plan">Game plan</h2>
+
+<section id="project-plan" class="level2">
+<h2 class="anchored" data-anchor-id="project-plan">Project plan</h2>
 <p>When I know who is participating, I will arrange for a short teaching session to go through the materials and giving a few examples. Then I expect the work to go as follows:</p>
 <ul>
-<li><p>Everyone scores the same 10 subjects, and I will calculate inter-rater-reliability statistics. If measures are not satisfying I will go through instructions again with some added feedback, and well have to try again. If/when satisfied,</p></li>
+<li><p>Everyone scores the same 50 subjects, and I will calculate inter-rater-reliability statistics. If measures are not satisfying I will go through instructions again with some added feedback, and well have to try again. If/when satisfied,</p></li>
 <li><p>I will allocate a specific number of subjects to each assessor (see <a href="../doc/down-to-work.html#sec-allocations">Allocations</a>). You can score your allocated subjects on your personal computer (please ensure adequate lightning conditions) and at any time you like. You’ll need assess to Citrix and PACS (see <a href="../doc/down-to-work.html#sec-suggested-workflow">Workflow</a> for a suggested optimal workflow).</p></li>
 <li><p>During the scoring process I will be able to follow the progress and check-in with you to provide help if needed. And I’ll make sure to create a few competitions along the way.</p></li>
 <li><p>When all participants are scored, I will be running analyses and send the draft manuscript for comments.</p></li>
@@ -279,10 +248,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  function tippyHover(el, contentFn) {
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -292,8 +260,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -306,6 +283,125 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
       return note.innerHTML;
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -349,6 +445,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -374,6 +471,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -442,15 +565,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     <div class="nav-footer-center">
       <ul class="footer-items list-unstyled">
     <li class="nav-item">
-    <a class="nav-link" href="../LICENSE.html">License: CC BY 4.0 </a>
+    <a class="nav-link" href="../LICENSE.html">
+<p>License: CC BY 4.0 {{&lt; fa brands creative-commons &gt;}} {{&lt; fa brands creative-commons-by &gt;}}</p>
+</a>
   </li>  
 </ul>
-    </div>
+    <div class="toc-actions"><ul><li><a href="https://github.com/agdamsbo/cSVD-burden-annotation-and-analysis-project/blob/main/doc/plan.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/agdamsbo/cSVD-burden-annotation-and-analysis-project/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
       &nbsp;
     </div>
   </div>
 </footer>
+
 
 
 

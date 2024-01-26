@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
+<meta name="generator" content="quarto-1.4.549">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -25,6 +25,7 @@ ul.task-list li input[type="checkbox"] {
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
+  margin-bottom: 0em;
 }
 .hanging-indent div.csl-entry {
   margin-left:2em;
@@ -65,7 +66,13 @@ div.csl-indent {
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -74,6 +81,7 @@ div.csl-indent {
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
@@ -87,9 +95,9 @@ div.csl-indent {
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container">
+      <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">cSVD burden project</span>
     </a>
@@ -101,28 +109,28 @@ div.csl-indent {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../index.html" rel="" target="">
- <span class="menu-text">Home</span></a>
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../doc/assessor-intro.html" rel="" target="">
- <span class="menu-text">Assessors</span></a>
+    <a class="nav-link" href="../doc/plan.html"> 
+<span class="menu-text">Project plan</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../doc/down-to-work.html" rel="" target="">
- <span class="menu-text">Scoring</span></a>
+    <a class="nav-link" href="../doc/down-to-work.html"> 
+<span class="menu-text">Annotation</span></a>
   </li>  
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-resources" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-resources" role="button" data-bs-toggle="dropdown" aria-expanded="false">
  <span class="menu-text">Resources</span>
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-resources">    
         <li>
-    <a class="dropdown-item" href="../doc/svd-score.html" rel="" target="">
+    <a class="dropdown-item" href="../doc/svd-score.html">
  <span class="dropdown-text">SVD scoring scale</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../doc/instrument.html" rel="" target="">
+    <a class="dropdown-item" href="../doc/instrument.html">
  <span class="dropdown-text">REDCap data capture</span></a>
   </li>  
     </ul>
@@ -130,14 +138,14 @@ div.csl-indent {
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/agdamsbo/cSVD-burden-annotation-and-analysis-project" rel="" target=""><i class="bi bi-github" role="img">
+    <a class="nav-link" href="https://github.com/agdamsbo/cSVD-burden-annotation-and-analysis-project"> <i class="bi bi-github" role="img">
 </i> 
- <span class="menu-text"></span></a>
+<span class="menu-text"></span></a>
   </li>  
 </ul>
-            <div class="quarto-navbar-tools">
-</div>
           </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
+</div>
       </div> <!-- /container-fluid -->
     </nav>
 </header>
@@ -151,9 +159,12 @@ div.csl-indent {
    
   <ul>
   <li><a href="#purpose" id="toc-purpose" class="nav-link active" data-scroll-target="#purpose">Purpose</a></li>
-  <li><a href="#scoring" id="toc-scoring" class="nav-link" data-scroll-target="#scoring">Scoring</a></li>
-  <li><a href="#setting" id="toc-setting" class="nav-link" data-scroll-target="#setting">Setting</a></li>
-  <li><a href="#definitions-on-biomarkers" id="toc-definitions-on-biomarkers" class="nav-link" data-scroll-target="#definitions-on-biomarkers">Definitions on biomarkers</a>
+  <li><a href="#sec-scorr" id="toc-sec-scorr" class="nav-link" data-scroll-target="#sec-scorr">Scoring table</a></li>
+  <li><a href="#setting" id="toc-setting" class="nav-link" data-scroll-target="#setting">Setting</a>
+  <ul class="collapse">
+  <li><a href="#different-suggested-scores" id="toc-different-suggested-scores" class="nav-link" data-scroll-target="#different-suggested-scores">Different suggested scores</a></li>
+  </ul></li>
+  <li><a href="#definitions-on-bio-markers" id="toc-definitions-on-bio-markers" class="nav-link" data-scroll-target="#definitions-on-bio-markers">Definitions on bio-markers</a>
   <ul class="collapse">
   <li><a href="#microbleeds" id="toc-microbleeds" class="nav-link" data-scroll-target="#microbleeds">Microbleeds</a></li>
   <li><a href="#superficial-siderosis" id="toc-superficial-siderosis" class="nav-link" data-scroll-target="#superficial-siderosis">Superficial siderosis</a></li>
@@ -163,7 +174,7 @@ div.csl-indent {
   </ul></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/agdamsbo/cSVD-burden-annotation-and-analysis-project/blob/main/doc/svd-score.qmd" class="toc-action">View source</a></p><p><a href="https://github.com/agdamsbo/cSVD-burden-annotation-and-analysis-project/issues/new" class="toc-action">Report an issue</a></p></div></div><div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="svd-score.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/agdamsbo/cSVD-burden-annotation-and-analysis-project/blob/main/doc/svd-score.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/agdamsbo/cSVD-burden-annotation-and-analysis-project/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div><div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="svd-score.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -189,7 +200,9 @@ div.csl-indent {
   </div>
   
 
+
 </header>
+
 
 <section id="purpose" class="level2">
 <h2 class="anchored" data-anchor-id="purpose">Purpose</h2>
@@ -209,132 +222,167 @@ Only intended for research use currently
 </div>
 </div>
 </section>
-<section id="scoring" class="level2">
-<h2 class="anchored" data-anchor-id="scoring">Scoring</h2>
+<section id="sec-scorr" class="level2">
+<h2 class="anchored" data-anchor-id="sec-scorr">Scoring table</h2>
 <table class="table-striped table-hover table">
 <caption>SVD score table</caption>
 <colgroup>
-<col style="width: 70%">
-<col style="width: 29%">
+<col style="width: 68%">
+<col style="width: 16%">
+<col style="width: 14%">
 </colgroup>
 <thead>
 <tr class="header">
 <th><strong>MRI features</strong></th>
-<th><strong>Raw SVD score value</strong></th>
+<th><strong>Raw score</strong></th>
+<th>Short score</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td><strong>Number of microbleeds (<em>T2*/SWI</em>)</strong></td>
 <td></td>
+<td></td>
 </tr>
 <tr class="even">
 <td>0</td>
 <td>0</td>
+<td>0</td>
 </tr>
 <tr class="odd">
+<td>1</td>
 <td>1</td>
 <td>1</td>
 </tr>
 <tr class="even">
 <td>2-4</td>
 <td>2</td>
+<td>1</td>
 </tr>
 <tr class="odd">
 <td>5-10</td>
 <td>3</td>
+<td>1</td>
 </tr>
 <tr class="even">
 <td>&gt;10</td>
 <td>4</td>
+<td>1</td>
 </tr>
 <tr class="odd">
 <td><strong>Location of microbleeds – no points (<em>T2*/SWI</em>)</strong></td>
+<td></td>
 <td></td>
 </tr>
 <tr class="even">
 <td>Lobar, deep, or infratentorial (choose one or more)</td>
 <td>L/D/I</td>
+<td>-</td>
 </tr>
 <tr class="odd">
 <td><strong>Superficiel siderose (<em>T2*/SWI</em>)</strong></td>
+<td></td>
 <td></td>
 </tr>
 <tr class="even">
 <td>No siderosis</td>
 <td>0</td>
+<td>-</td>
 </tr>
 <tr class="odd">
 <td>1 sulcus</td>
 <td>1</td>
+<td>-</td>
 </tr>
 <tr class="even">
 <td>&gt;1 sulcus</td>
 <td>2</td>
+<td>-</td>
 </tr>
 <tr class="odd">
 <td><strong>Lacunes (<em>FLAIR</em>)</strong></td>
 <td></td>
+<td></td>
 </tr>
 <tr class="even">
 <td>0</td>
 <td>0</td>
+<td>0</td>
 </tr>
 <tr class="odd">
-<td>1-2</td>
+<td>1</td>
+<td>1</td>
 <td>1</td>
 </tr>
 <tr class="even">
-<td>3-5</td>
 <td>2</td>
+<td>2</td>
+<td>1</td>
 </tr>
 <tr class="odd">
-<td>&gt;5</td>
+<td>3-5</td>
 <td>3</td>
+<td>1</td>
 </tr>
 <tr class="even">
+<td>&gt;5</td>
+<td>4</td>
+<td>1</td>
+</tr>
+<tr class="odd">
 <td><strong>White matter hyperintensities – see Figure 1 (<em>FLAIR</em>)</strong></td>
 <td></td>
-</tr>
-<tr class="odd">
-<td>Absent</td>
-<td>0</td>
-</tr>
-<tr class="even">
-<td>Punctate foci</td>
-<td>1</td>
-</tr>
-<tr class="odd">
-<td>Beginning confluence</td>
-<td>2</td>
-</tr>
-<tr class="even">
-<td>Large confluent areas</td>
-<td>3</td>
-</tr>
-<tr class="odd">
-<td><strong>Atrophy - see Figure 2 (<em>FLAIR/T1</em>)</strong></td>
 <td></td>
 </tr>
 <tr class="even">
-<td>No</td>
+<td>Absent</td>
+<td>0</td>
 <td>0</td>
 </tr>
 <tr class="odd">
-<td>Mild</td>
+<td>Punctate foci</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td>Beginning confluence</td>
+<td>2</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td>Large confluent areas</td>
+<td>3</td>
 <td>1</td>
 </tr>
 <tr class="even">
-<td>Moderate</td>
-<td>2</td>
+<td><strong>Atrophy - see Figure 2 (<em>FLAIR/T1</em>)</strong></td>
+<td></td>
+<td></td>
 </tr>
 <tr class="odd">
-<td>Severe</td>
-<td>3</td>
+<td>No</td>
+<td>0</td>
+<td>0</td>
 </tr>
 <tr class="even">
+<td>Mild</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<td>Moderate</td>
+<td>2</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td>Severe</td>
+<td>3</td>
+<td>1</td>
+</tr>
+<tr class="odd">
 <td><strong>Total SVD score</strong></td>
-<td><strong>0-15</strong></td>
+<td><strong>0-16</strong></td>
+<td><strong>0-4</strong></td>
 </tr>
 </tbody>
 </table>
@@ -343,10 +391,14 @@ Only intended for research use currently
 <h2 class="anchored" data-anchor-id="setting">Setting</h2>
 <p>The scoring system is intended for use with acute MRI stroke scans. Scans are performed according to the acute stroke protocol at the given time of scan. Available sequences are DWI, ADC, 2D FLAIR, and T2* or SWI in our setting, but if available 3D FLAIR and T1 sequences should be used. Data capturing should reflect this, if data is later merged from different populations.</p>
 <p>Scoring is performed independently by trained neurologists. Inter-rate-reliability-measures are performed to ensure validity.</p>
+<section id="different-suggested-scores" class="level3">
+<h3 class="anchored" data-anchor-id="different-suggested-scores">Different suggested scores</h3>
+<p>Inspired by the scores from</p>
 </section>
-<section id="definitions-on-biomarkers" class="level2">
-<h2 class="anchored" data-anchor-id="definitions-on-biomarkers">Definitions on biomarkers</h2>
-<p>Definitions are mainly according to the STRIVE v1 criteria,<span class="citation" data-cites="wardlaw2013">(<a href="#ref-wardlaw2013" role="doc-biblioref">Wardlaw et al. 2013</a>)</span> with minor local specifications.</p>
+</section>
+<section id="definitions-on-bio-markers" class="level2">
+<h2 class="anchored" data-anchor-id="definitions-on-bio-markers">Definitions on bio-markers</h2>
+<p>Definitions are mainly according to the STRIVE v1 criteria,<span class="citation" data-cites="wardlaw2013">(<a href="#ref-wardlaw2013" role="doc-biblioref">Joanna M. Wardlaw et al. 2013</a>)</span> with minor local specifications. The bio-markers included are within the suggestions from <span class="citation" data-cites="markus2022">Markus et al. (<a href="#ref-markus2022" role="doc-biblioref">2022</a>)</span> in the FINESSE framework.</p>
 <section id="microbleeds" class="level3">
 <h3 class="anchored" data-anchor-id="microbleeds">Microbleeds</h3>
 <p>Sequence: T2*/SWI</p>
@@ -357,13 +409,14 @@ Only intended for research use currently
 <section id="superficial-siderosis" class="level3">
 <h3 class="anchored" data-anchor-id="superficial-siderosis">Superficial siderosis</h3>
 <p>Sequence: T2*/SWI</p>
-<p>“Investigators should describe the location of siderosis (i.e., the number of sulci involved and in which lobes).”<span class="citation" data-cites="wardlaw2013">(<a href="#ref-wardlaw2013" role="doc-biblioref">Wardlaw et al. 2013, 828</a>)</span></p>
+<p>“Investigators should describe the location of siderosis (i.e., the number of sulci involved and in which lobes).”<span class="citation" data-cites="wardlaw2013">(<a href="#ref-wardlaw2013" role="doc-biblioref">Joanna M. Wardlaw et al. 2013, 828</a>)</span></p>
 </section>
 <section id="lacunar-infarcts" class="level3">
 <h3 class="anchored" data-anchor-id="lacunar-infarcts">Lacunar infarcts</h3>
 <p>Sequence: 2D/3D FLAIR</p>
-<p>“A round or ovoid, subcortical, fluid-filled cavity (signal similar to CSF) of between 3 mm and about 15 mm in diameter, consistent with a previous acute small subcortical infarct or haemorrhage in the territory of one perforating arteriole.”<span class="citation" data-cites="wardlaw2013">(<a href="#ref-wardlaw2013" role="doc-biblioref">Wardlaw et al. 2013, 825</a>)</span></p>
+<p>“A round or ovoid, subcortical, fluid-filled cavity (signal similar to CSF) of between 3 mm and about 15 mm in diameter, consistent with a previous acute small subcortical infarct or haemorrhage in the territory of one perforating arteriole.”<span class="citation" data-cites="wardlaw2013">(<a href="#ref-wardlaw2013" role="doc-biblioref">Joanna M. Wardlaw et al. 2013, 825</a>)</span></p>
 <p>Additionally: “We identified asymptomatic lacunar infarcts as sharply demarcated hyperintense lesions &lt;20 mm on T2-weighted images with corresponding hypointense lesions with a hyperintense rim on FLAIR. In lacunar stroke patients, the lesion could not be compatible with the clinical stroke.”<span class="citation" data-cites="huijts2013">(<a href="#ref-huijts2013" role="doc-biblioref">Huijts et al. 2013</a>)</span></p>
+<p>Based on the practice by <span class="citation" data-cites="olama2020">Olama et al. (<a href="#ref-olama2020" role="doc-biblioref">2020</a>)</span> and the 2021 ESO guidelines on covert small vessel disease, lacunes are counted 0, 1 , 2 , 3-5 and &gt;5.<span class="citation" data-cites="wardlaw2021">(<a href="#ref-wardlaw2021" role="doc-biblioref">Joanna M. Wardlaw et al. 2021</a>)</span></p>
 </section>
 <section id="white-matter-hyperintensities" class="level3">
 <h3 class="anchored" data-anchor-id="white-matter-hyperintensities">White matter hyperintensities</h3>
@@ -380,7 +433,7 @@ Only intended for research use currently
 </section>
 <section id="references" class="level2">
 <h2 class="anchored" data-anchor-id="references">References</h2>
-<div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
 <div id="ref-akoudad2016" class="csl-entry" role="listitem">
 Akoudad, Saloua, Frank J. Wolters, Anand Viswanathan, Renée F. de Bruijn, Aad van der Lugt, Albert Hofman, Peter J. Koudstaal, M. Arfan Ikram, and Meike W. Vernooij. 2016. <span>“Association of Cerebral Microbleeds With Cognitive Decline and Dementia.”</span> <em>JAMA neurology</em> 73 (8): 934–43. <a href="https://doi.org/10.1001/jamaneurol.2016.1017">https://doi.org/10.1001/jamaneurol.2016.1017</a>.
 </div>
@@ -396,8 +449,17 @@ Harper, Lorna, Frederik Barkhof, Nick C. Fox, and Jonathan M. Schott. 2015. <spa
 <div id="ref-huijts2013" class="csl-entry" role="listitem">
 Huijts, Marjolein, Annelien Duits, Robert J. van Oostenbrugge, Abraham A. Kroon, Peter W. de Leeuw, and Julie Staals. 2013. <span>“Accumulation of MRI Markers of Cerebral Small Vessel Disease is Associated with Decreased Cognitive Function. A Study in First-Ever Lacunar Stroke and Hypertensive Patients.”</span> <em>Frontiers in Aging Neuroscience</em> 5: 72. <a href="https://doi.org/10.3389/fnagi.2013.00072">https://doi.org/10.3389/fnagi.2013.00072</a>.
 </div>
+<div id="ref-markus2022" class="csl-entry" role="listitem">
+Markus, Hugh S., Wiesje M. van Der Flier, Eric E. Smith, Philip Bath, Geert Jan Biessels, Emily Briceno, Amy Brodtman, et al. 2022. <span>“Framework for Clinical Trials in Cerebral Small Vessel Disease (FINESSE).”</span> <em>JAMA Neurology</em> 79 (11): 1187. <a href="https://doi.org/10.1001/jamaneurol.2022.2262">https://doi.org/10.1001/jamaneurol.2022.2262</a>.
+</div>
+<div id="ref-olama2020" class="csl-entry" role="listitem">
+Olama, Ali Amin Al, James M. S. Wason, Anil M. Tuladhar, Esther M. C. van Leijsen, Marisa Koini, Edith Hofer, Robin G. Morris, Reinhold Schmidt, Frank-Erik de Leeuw, and Hugh S. Markus. 2020. <span>“Simple MRI Score Aids Prediction of Dementia in Cerebral Small Vessel Disease.”</span> <em>Neurology</em> 94 (12): e1294–1302. <a href="https://doi.org/10.1212/WNL.0000000000009141">https://doi.org/10.1212/WNL.0000000000009141</a>.
+</div>
 <div id="ref-vernooij2008" class="csl-entry" role="listitem">
 Vernooij, M. W., A. van der Lugt, M. A. Ikram, P. A. Wielopolski, W. J. Niessen, A. Hofman, G. P. Krestin, and M. M. B. Breteler. 2008. <span>“Prevalence and Risk Factors of Cerebral Microbleeds: The Rotterdam Scan Study.”</span> <em>Neurology</em> 70 (14): 1208–14. <a href="https://doi.org/10.1212/01.wnl.0000307750.41970.d9">https://doi.org/10.1212/01.wnl.0000307750.41970.d9</a>.
+</div>
+<div id="ref-wardlaw2021" class="csl-entry" role="listitem">
+Wardlaw, Joanna M, Stephanie Debette, Hanna Jokinen, Frank-Erik De Leeuw, Leonardo Pantoni, Hugues Chabriat, Julie Staals, et al. 2021. <span>“ESO Guideline on Covert Cerebral Small Vessel Disease.”</span> <em>European Stroke Journal</em> 6 (2): CXI–CLXII. <a href="https://doi.org/10.1177/23969873211012132">https://doi.org/10.1177/23969873211012132</a>.
 </div>
 <div id="ref-wardlaw2013" class="csl-entry" role="listitem">
 Wardlaw, Joanna M., Eric E. Smith, Geert J. Biessels, Charlotte Cordonnier, Franz Fazekas, Richard Frayne, Richard I. Lindley, et al. 2013. <span>“Neuroimaging Standards for Research into Small Vessel Disease and Its Contribution to Ageing and Neurodegeneration.”</span> <em>The Lancet Neurology</em> 12 (8): 822–38. <a href="https://doi.org/10.1016/S1474-4422(13)70124-8">https://doi.org/10.1016/S1474-4422(13)70124-8</a>.
@@ -487,10 +549,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  function tippyHover(el, contentFn) {
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -500,8 +561,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -514,6 +584,125 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
       return note.innerHTML;
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -557,6 +746,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -582,6 +772,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -650,15 +866,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     <div class="nav-footer-center">
       <ul class="footer-items list-unstyled">
     <li class="nav-item">
-    <a class="nav-link" href="../LICENSE.html">License: CC BY 4.0 </a>
+    <a class="nav-link" href="../LICENSE.html">
+<p>License: CC BY 4.0 {{&lt; fa brands creative-commons &gt;}} {{&lt; fa brands creative-commons-by &gt;}}</p>
+</a>
   </li>  
 </ul>
-    </div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/agdamsbo/cSVD-burden-annotation-and-analysis-project/blob/main/doc/svd-score.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/agdamsbo/cSVD-burden-annotation-and-analysis-project/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
       &nbsp;
     </div>
   </div>
 </footer>
+
 
 
 
