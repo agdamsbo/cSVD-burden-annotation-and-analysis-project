@@ -7,18 +7,75 @@ format:
 editor: visual
 ---
 
-## Allocations {#sec-allocations}
+## Allocation table {#sec-allocations}
 
 ```{r}
 #| eval: true
 #| echo: false
 #| label: allocation-table
-#| tbl-cap: Allocation of subject IDs
+#| tbl-cap: Assessor allocation of subject IDs
 read.csv(here::here("data/allocation.csv")) |>
+    na.omit() |> 
   dplyr::transmute(assessor,
     IDs = paste0("svd_", start, "-", stop)
   ) |>
   knitr::kable()
 ```
 
-{{< include _score-flow.qmd >}}
+## Suggested workflow {#sec-suggested-workflow}
+
+**In REDCap:**
+
+1.  Login to AU REDCap, open the "SVD-burden POOL" project and go to
+    "**Record Status Dashboard**" ([just follow this
+    link](https://redcap.au.dk/redcap_v13.7.21/DataEntry/record_status_dashboard.php?pid=8420&rd_id=3187))
+
+2.  From the drop-down "**Dashboard displayed**", choose the desired
+    dashboard (there is one common for the first, and one for each
+    assessor with allocated subjects).
+
+    -   Please refer to the table above for allocations.
+
+3.  Open the "SVD score" instrument to start capturing the score.
+
+    -   If the "dot" is colored, the instrument already has been filled.
+        Press the "+"-sign to create a new version (mainly necessary
+        during the inter-rater-reliability testing, as each subject is
+        only scored once)
+
+4.  In the top of the instrument, the patient CPR, name and admission
+    time is printed as well as assessor allocated (should be you, but
+    please check) and link to Citrix for convenience.
+
+**In Citrix/PACS:**
+
+5.  Open the "Billeddiagnostik PACS" module (find it under "APPS" and
+    "star" it the first time) and look up the patient using the CPR
+    number copied from REDCap.
+
+6.  Please use the subject admission date and time as reference to
+    select the correct scan and the exact date and time of the scan
+    (fields are pre-filled with admission date and time).
+
+7.  The scan might take a minute or two to load from the storage server.
+    A little patience is necessary. The first time, you can use this
+    time to arrange your program windows for optimal workflow.
+
+    -   Maximise the "PACS" window on the left half of yuor screen and
+        "REDCap" on the left (to have controls line up in the middle and
+        minimize cursor movement)
+
+        Note that the REDCap is organized by MRI sequences (T2\*/SWI and
+        FLAIR) corresponding to how they are organized in PACS. The
+        relevant sequences are usually found at the buttom of the list
+        in PACS.
+
+**In REDCap:**
+
+8.  When done filling out all fields, you can save the data and go
+    directly to the next subject by clicking "Save & Go To Next Record"
+
+    -   On the right and at the end of the instrument, there are two
+        blue boxes. The top is "Save & Exit Form", the second have
+        different options to choose from by clicking the arrow on the
+        right. Choose "Save & Go To Next Record". Then repeat step 3-8.

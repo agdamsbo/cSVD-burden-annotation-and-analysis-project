@@ -1,5 +1,7 @@
 ---
 titel: "Wrangling"
+execute: 
+  eval: false
 ---
 
 ```{r}
@@ -11,7 +13,7 @@ source(here::here("R/functions.R"))
 ## Reupload original TALOS data
 
 ```{r}
-ds <- import_talos() 
+ds <- import_talos()
 ds_mod <- ds |>
   filter_talos_site(site = "10015") |>
   modify_data(trial = "TALOS", index = 0)
@@ -26,7 +28,6 @@ skimr::skim(ds_mod)
 Upload
 
 ```{r}
-#| eval: false
 ds_mod |> write2db()
 ```
 
@@ -35,9 +36,13 @@ ds_mod |> write2db()
 ```{r}
 ds_irr <- read_instrument(key = "SVD_REDCAP_API", instrument = "svd_score")|> 
   inter_rater_data()
+```
 
+```{r}
 skimr::skim(ds_irr)
+```
 
+```{r}
 ds_irr  |>
   inter_rater_calc()
 ```

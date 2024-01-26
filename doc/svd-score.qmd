@@ -25,38 +25,39 @@ The following scoring system is not formally published and has not been
 through peer-review.
 :::
 
-## Scoring
+## Scoring table {#sec-scorr}
 
-| **MRI features**                                            | **Raw SVD score value** |
-|-------------------------------------------------------------|-------------------------|
-| **Number of microbleeds (*T2\*/SWI*)**                      |                         |
-| 0                                                           | 0                       |
-| 1                                                           | 1                       |
-| 2-4                                                         | 2                       |
-| 5-10                                                        | 3                       |
-| \>10                                                        | 4                       |
-| **Location of microbleeds -- no points (*T2\*/SWI*)**       |                         |
-| Lobar, deep, or infratentorial (choose one or more)         | L/D/I                   |
-| **Superficiel siderose (*T2\*/SWI*)**                       |                         |
-| No siderosis                                                | 0                       |
-| 1 sulcus                                                    | 1                       |
-| \>1 sulcus                                                  | 2                       |
-| **Lacunes (*FLAIR*)**                                       |                         |
-| 0                                                           | 0                       |
-| 1-2                                                         | 1                       |
-| 3-5                                                         | 2                       |
-| \>5                                                         | 3                       |
-| **White matter hyperintensities -- see Figure 1 (*FLAIR*)** |                         |
-| Absent                                                      | 0                       |
-| Punctate foci                                               | 1                       |
-| Beginning confluence                                        | 2                       |
-| Large confluent areas                                       | 3                       |
-| **Atrophy - see Figure 2 (*FLAIR/T1*)**                     |                         |
-| No                                                          | 0                       |
-| Mild                                                        | 1                       |
-| Moderate                                                    | 2                       |
-| Severe                                                      | 3                       |
-| **Total SVD score**                                         | **0-15**                |
+| **MRI features**                                            | **Raw score** | Short score |
+|-------------------------------------------------------------|---------------|-------------|
+| **Number of microbleeds (*T2\*/SWI*)**                      |               |             |
+| 0                                                           | 0             | 0           |
+| 1                                                           | 1             | 1           |
+| 2-4                                                         | 2             | 1           |
+| 5-10                                                        | 3             | 1           |
+| \>10                                                        | 4             | 1           |
+| **Location of microbleeds -- no points (*T2\*/SWI*)**       |               |             |
+| Lobar, deep, or infratentorial (choose one or more)         | L/D/I         | \-          |
+| **Superficiel siderose (*T2\*/SWI*)**                       |               |             |
+| No siderosis                                                | 0             | \-          |
+| 1 sulcus                                                    | 1             | \-          |
+| \>1 sulcus                                                  | 2             | \-          |
+| **Lacunes (*FLAIR*)**                                       |               |             |
+| 0                                                           | 0             | 0           |
+| 1                                                           | 1             | 1           |
+| 2                                                           | 2             | 1           |
+| 3-5                                                         | 3             | 1           |
+| \>5                                                         | 4             | 1           |
+| **White matter hyperintensities -- see Figure 1 (*FLAIR*)** |               |             |
+| Absent                                                      | 0             | 0           |
+| Punctate foci                                               | 1             | 0           |
+| Beginning confluence                                        | 2             | 1           |
+| Large confluent areas                                       | 3             | 1           |
+| **Atrophy - see Figure 2 (*FLAIR/T1*)**                     |               |             |
+| No                                                          | 0             | 0           |
+| Mild                                                        | 1             | 0           |
+| Moderate                                                    | 2             | 1           |
+| Severe                                                      | 3             | 1           |
+| **Total SVD score**                                         | **0-16**      | **0-4**     |
 
 : SVD score table {.striped .hover}
 
@@ -72,10 +73,16 @@ different populations.
 Scoring is performed independently by trained neurologists.
 Inter-rate-reliability-measures are performed to ensure validity.
 
-## Definitions on biomarkers
+### Different suggested scores
+
+Inspired by the scores from
+
+## Definitions on bio-markers
 
 Definitions are mainly according to the STRIVE v1
-criteria,[@wardlaw2013] with minor local specifications.
+criteria,[@wardlaw2013] with minor local specifications. The bio-markers
+included are within the suggestions from @markus2022 in the FINESSE
+framework.
 
 ### Microbleeds
 
@@ -113,6 +120,10 @@ demarcated hyperintense lesions \<20 mm on T2-weighted images with
 corresponding hypointense lesions with a hyperintense rim on FLAIR. In
 lacunar stroke patients, the lesion could not be compatible with the
 clinical stroke."[@huijts2013]
+
+Based on the practice by @olama2020 and the 2021 ESO guidelines on
+covert small vessel disease, lacunes are counted 0, 1 , 2 , 3-5 and
+\>5.[@wardlaw2021]
 
 ### White matter hyperintensities
 

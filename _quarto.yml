@@ -10,10 +10,10 @@ website:
     left:
       - href: index.qmd
         text: Home
-      - href: doc/assessor-intro.qmd
-        text: Assessors
+      - href: doc/plan.qmd
+        text: Project plan
       - href: doc/down-to-work.qmd
-        text: Scoring
+        text: Annotation
       # - href: doc/status.qmd
       #   text: Status
       - text: Resources

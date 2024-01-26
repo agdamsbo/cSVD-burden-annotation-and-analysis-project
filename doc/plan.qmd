@@ -1,0 +1,16 @@
+---
+title: "Project plan"
+editor: visual
+---
+
+## Project plan
+
+When I know who is participating, I will arrange for a short teaching session to go through the materials and giving a few examples. Then I expect the work to go as follows:
+
+-   Everyone scores the same 50 subjects, and I will calculate inter-rater-reliability statistics. If measures are not satisfying I will go through instructions again with some added feedback, and well have to try again. If/when satisfied,
+
+-   I will allocate a specific number of subjects to each assessor (see [Allocations](down-to-work.qmd#sec-allocations)). You can score your allocated subjects on your personal computer (please ensure adequate lightning conditions) and at any time you like. You'll need assess to Citrix and PACS (see [Workflow](down-to-work.qmd#sec-suggested-workflow) for a suggested optimal workflow).
+
+-   During the scoring process I will be able to follow the progress and check-in with you to provide help if needed. And I'll make sure to create a few competitions along the way.
+
+-   When all participants are scored, I will be running analyses and send the draft manuscript for comments.

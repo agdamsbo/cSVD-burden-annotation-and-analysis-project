@@ -1,0 +1,195 @@
+---
+title: "SVD annotation intro"
+author:
+  - name: Andreas
+    orcid: 0000-0002-7559-1154
+    email: andrlr@rm.dk
+    url: https://pure.au.dk/portal/en/persons/andreas-gammelgaard-damsbo(e3c4afce-3eba-4456-8b8b-2fd90775c87a).html
+    affiliations:
+      - ref: dsc
+affiliations:
+  - id: dsc
+    name: Danish Stroke Centre, AUH
+    department: Neurology
+    city: Aarhus
+    country: Denmark
+    url: https://www.en.auh.dk/departments/danish-stroke-centre/
+format:
+  revealjs:
+    slide-number: true
+    preview-links: auto
+    slide-level: 3
+    fig-align: center
+---
+
+## Project flow
+
+```{r project-flow}
+#| echo: false
+library(DiagrammeR)
+graph1 <- DiagrammeR::grViz("digraph {
+
+graph [layout = dot, rankdir = LR]
+
+# define the global styles of the nodes. We can override these in box if we wish
+node [shape = rectangle, style = filled, fillcolor = CornflowerBlue]
+
+intro [label = 'Intro', fillcolor = Goldenrod]
+irr [label = 'Inter-rater \n reliability', fillcolor = Crimson]
+scoring [label =  'Allocation', fillcolor = ForestGreen, textcolor = White]
+analyses [label = 'Merge and \n analyses']
+results [label= 'ESOC \n abstract']
+
+# edge definitions with the node IDs
+intro  -> irr -> scoring -> analyses -> results
+irr -> intro
+}")
+graph1
+```
+
+```{r}
+#| include: false
+library(DiagrammeR)
+graph2 <- create_graph() |> 
+  add_nodes_from_table(
+    table = data.frame(id=1:5,
+                 label=c("Intro","Inter-rater \n reliability",'Allocation','Merge and \n analyses','ESOC \n abstract')),
+    label_col = label
+  )|> 
+  add_edges_from_table(
+    table = rbind(c(1,2),c(2,1),c(2,3),c(3,4),c(4,5)) |> data.frame() |> setNames(c("from","to")),
+    from_col = from,
+    to_col = to,
+    from_to_map = id_external
+  ) |> 
+  render_graph(layout="tree")
+
+```
+
+## Baggrund
+
+> Physical activity (PA) may reduce the development of small vessel
+> disease (SVD). The effect of physical activity and more classical
+> vascular risk factors such as hypertension and diabetes in the
+> development of SVD is debated, however. We aim to investigate the
+> effect modification of physical activity on traditional vascular risk
+> factors and the burden of small vessel disease among acute ischemic
+> stroke patients. \[ESOC 2024, submitted abstract\]
+
+### 
+
+![](images/strive1-ex.png)
+
+### 
+
+![](images/strive1.png)
+
+### 
+
+![](images/strive2.png)
+
+## Scoring
+
+-   Første 10 (pt 1-11) til IRR-beregning
+
+-   Det kan være svært. Lad være at bruge lang tid på hver pt. Vi kan
+    snakke om det.
+
+-   Først registrering, så kommer der eksempler.
+
+### REDCap
+
+::: {style="text-align: center; margin-top: 1em"}
+[REDCap: SVD score
+instrument](https://redcap.au.dk/redcap_v13.7.21/DataEntry/record_status_dashboard.php?pid=8420){preview-link="false"
+style="text-align: center" target="_blank"}
+:::
+
+### Microbleeds #1-1
+
+![](images/microbleed1_1.png)
+
+### Superficiel siderose #1-1
+
+![](images/siderosis1.png)
+
+### Superficiel siderose #1-2
+
+![](images/siderosis2.png)
+
+### Superficiel siderose #1-3
+
+![](images/siderosis3.png)
+
+### Lacunar infarcts #1-1
+
+![](images/lacune1_1.png)
+
+### Lacunar infarcts #1-2
+
+![](images/lacune1_2.png)
+
+### WMH (Deep white matter) #0
+
+![](images/wmh0_1.png)
+
+### WMH (Deep white matter) #1
+
+![](images/wmh1_1.png)
+
+### WMH (Deep white matter) #2
+
+![](images/wmh2_1.png)
+
+### WMH (Deep white matter) #3
+
+![](images/wmh3_1.png)
+
+### Atrophy (GCA) #0-1
+
+![](images/gca0_1.png)
+
+### Atrophy (GCA) #0-2
+
+![](images/gca0_2.png)
+
+### Atrophy (GCA) #1-1
+
+![](images/gca1_1.png)
+
+### Atrophy (GCA) #1-2
+
+![](images/gca1_2.png)
+
+### Atrophy (GCA) #2-1
+
+![](images/gca2_1.png)
+
+### Atrophy (GCA) #2-2
+
+![](images/gca2_2.png)
+
+## Website
+
+::: {style="text-align: center; margin-top: 1em"}
+[Resource
+page](https://agdamsbo.github.io/cSVD-burden-annotation-and-analysis-project/){preview-link="true"
+style="text-align: center"}
+:::
+
+## Plan
+
+```{r project-flow}
+```
+
+## Noter
+
+-   Igen, tusind tak
+
+-   Noget er svært, andet er knap så svært
+
+-   Vi kan snakke sammen undervejs
+
+-   Al hjælp er hjælp
+
+-   Start med de første 10, så ser vi på det.

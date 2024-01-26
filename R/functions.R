@@ -1,3 +1,9 @@
+################################################################################
+########
+########      TALOS
+########
+################################################################################
+
 #' Imports specified TALOS data
 #'
 #' @param token api token
@@ -60,12 +66,10 @@ redcap_get_n <- function(key = "SVD_REDCAP_API") {
 #'
 #' @return tibble with modified data
 #' @examples
-#' ds |> modify_data(index=0,trial="TALOS")
-#' ds |> modify_data(trial="RESIST")
-modify_data <- function(data,
+#' ds |> modify_data_talos(index=0,trial="TALOS")
+modify_data_talos <- function(data,
                         index = redcap_get_n(),
                         trial,
-                        key = "SVD_REDCAP_API",
                         id.var = inkl_rnumb,
                         cpr.var = cpr,
                         name.var = talos_inkl03x,
@@ -87,6 +91,85 @@ modify_data <- function(data,
     )
 }
 
+################################################################################
+########
+########      RESIST
+########
+################################################################################
+
+#' Imports specified data
+#'
+#' @param token api token
+#' @param vars variable names to retrieve (fields in REDCap lingo)
+#'
+#' @return tibble of REDCap exported data
+#' @examples
+#' data <- import_resist()
+#' skimr::skim(data)
+import_resist <- function(key = "RESIST-MIGRATION",keyring = "REDCAP_APIs",service="redcapAPI",
+                         vars = c("resistid", "cpr", "navn", "scan_dato_tid", "afdelingid", "target_population")) {
+  REDCapR::redcap_read(
+    redcap_uri = "https://redcap.au.dk/api/", token = keyring::key_get(service=service, username = key, keyring = keyring),
+    fields = vars
+  )$data
+}
+
+#' Filter RESIST by site and target and scan
+#'
+#' @param data
+#' @param site default is "10015", which is Aarhus
+#'
+#' @return
+#' @export
+#'
+#' @examples
+#' resist_aarhus <- import_redcap(key = "RESIST-MIGRATION",keyring = "REDCAP_APIs",service="redcapAPI",
+#' vars = c("resistid", "cpr", "navn", "scan_dato_tid", "afdelingid", "target_population")) |>
+#' filter_resist(site = 1, target = 1, datetime.var="scan_dato_tid")
+filter_resist <- function(data, site, target, datetime.var) {
+  data |> dplyr::filter(afdelingid %in% site) |>
+      dplyr::filter(target_population %in% target) |>
+    dplyr::filter(!is.na(datetime.var))
+}
+
+#' Modifies exported RESIST data to new database format
+#'
+#' @param data tibbled REDCap data
+#' @param trial source trial name. TALOS or RESIST
+#' @param key destination project API key name
+#'
+#' @return tibble with modified data
+#' @examples
+#' resist_aarhus |> modify_data_resist(trial="RESIST", id.var = resistid, datetime.var = scan_dato_tid, name.var = navn)
+modify_data_resist <- function(data,
+                        index = redcap_get_n(),
+                        trial,
+                        id.var = inkl_rnumb,
+                        cpr.var = cpr,
+                        datetime.var,
+                        name.var = talos_inkl03x) {
+  ids <- seq_len(nrow(data)) + (index)
+
+  data |>
+    dplyr::mutate(ids = ids) |>
+    dplyr::transmute(
+      record_id = glue::glue("svd_{ids}"),
+      trial_id = {{ id.var }},
+      cpr = {{ cpr.var }},
+      name = {{ name.var }},
+      index_date = strftime({{ datetime.var }}, "%Y-%m-%d"),
+      index_time = strftime({{ datetime.var }}, "%H:%M"),
+      trial_name = trial,
+      basis_complete = 2
+    )
+}
+
+################################################################################
+########
+########      UPLOAD
+########
+################################################################################
+
 #' Write data to REDCap db
 #'
 #' @param key project key set in `keyring`
@@ -98,6 +181,8 @@ modify_data <- function(data,
 #'   filter_talos_site() |>
 #'   modify_data() |>
 #'   write2db()
+#' resist_ds <- import_resist() |> filter_resist() |> modify_data_resist()
+#' resist_ds |> write2db()
 write2db <- function(data, key = "SVD_REDCAP_API") {
   REDCapR::redcap_write(
     redcap_uri = "https://redcap.au.dk/api/",
@@ -105,6 +190,12 @@ write2db <- function(data, key = "SVD_REDCAP_API") {
     ds_to_write = data
   )
 }
+
+################################################################################
+########
+########      SVD data management and analyses
+########
+################################################################################
 
 
 ## Inter-rater-reliability
@@ -148,6 +239,7 @@ irr_sample <- function() {
 arrange_record_id <- function(data, remove = "svd_") {
   data |>
     dplyr::arrange(as.numeric(stringr::str_remove(record_id, remove)))
+  ## Improve by removing everything not being a number?
 }
 
 #' Read single REDCap instrument
@@ -159,7 +251,9 @@ arrange_record_id <- function(data, remove = "svd_") {
 #' @export
 #'
 #' @examples
-#' read_instrument(key = "SVD_REDCAP_API", instrument = "svd_score")
+#' data <- read_instrument(key = "SVD_REDCAP_API", instrument = "svd_score")
+#' basis_ds <- read_instrument(key = "SVD_REDCAP_API", instrument = "basis")
+#' basis_ds |> arrange_record_id() |> head(100)
 read_instrument <- function(key = "SVD_REDCAP_API", instrument = "svd_score", raw_label = "raw") {
   REDCapCAST::read_redcap_tables(
     uri = "https://redcap.au.dk/api/", token = keyring::key_get(key),
@@ -199,6 +293,23 @@ inter_rater_data <- function(data) {
 }
 
 
+#' Simplified SVD score 0-4
+#'
+#' @param data
+#'
+#' @return
+#' @export
+#'
+#' @examples
+#' data <- read_instrument() |> inter_rater_data()
+simple_score <- function(data){
+  data |> dplyr::transmute(microbleed=dplyr::if_else(svd_microbleed<1,0,1),
+                           lacunes=dplyr::if_else(svd_lacunes<1,0,1),
+                           wmh=dplyr::if_else(svd_wmh<2,0,1),
+                           atrophy=dplyr::if_else(svd_atrophy<2,0,1))
+}
+
+
 #' Inter rater reliability calculations
 #'
 #' @param data
@@ -215,7 +326,7 @@ inter_rater_calc <- function(data) {
   data |> tidycomm::test_icr(unit_var = record_id, coder_var = svd_user, fleiss_kappa = TRUE)
 }
 
-#' UPload assessor allocation
+#' Upload assessor allocation
 #'
 #' @param data
 #'
@@ -225,7 +336,7 @@ inter_rater_calc <- function(data) {
 #' @examples
 #' format_assessors() |> write2db()
 format_assessors <- function(path="data/allocation.csv"){
-  ds <- read.csv(here::here(path))
+  ds <- read.csv(here::here(path)) |> na.omit()
 
   seq_len(nrow(ds)) |> lapply(function(x){
     ds[x,] |> dplyr::tibble(record_id=paste0("svd_",seq(start,stop)),
