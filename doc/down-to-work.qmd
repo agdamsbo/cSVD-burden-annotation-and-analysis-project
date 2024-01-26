@@ -32,9 +32,7 @@ read.csv(here::here("data/allocation.csv")) |>
 
 2.  From the drop-down "**Dashboard displayed**", choose the desired
     dashboard (there is one common for the first, and one for each
-    assessor with allocated subjects).
-
-    -   Please refer to the table above for allocations.
+    assessor with allocated subjects and progress).
 
 3.  Open the "SVD score" instrument to start capturing the score.
 
@@ -75,6 +73,9 @@ read.csv(here::here("data/allocation.csv")) |>
 8.  When done filling out all fields, you can save the data and go
     directly to the next subject by clicking "Save & Go To Next Record"
 
+    -   The last item is "**Complete?**". Use "Incomplete" if
+        interrupted, "Unverified" in case of doubt, "Complete" when
+        completed.
     -   On the right and at the end of the instrument, there are two
         blue boxes. The top is "Save & Exit Form", the second have
         different options to choose from by clicking the arrow on the
