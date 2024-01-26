@@ -1,0 +1,15 @@
+---
+title: "Project status"
+editor: visual
+---
+
+Below is an overview to get a project status and timeline.
+
+| Event                                             | Date               |
+|---------------------------------------------------|--------------------|
+| Project intro meeting                             | 23\. January 2024  |
+| Project launch                                    | 26\. January 2024  |
+| Initial 50 subjects for IRR-calculations deadline | 29\. February 2024 |
+| ESOC 2024 (abstract submitted)                    | 14\. May 2024      |
+
+: Project timeline
