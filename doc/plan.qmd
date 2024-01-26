@@ -5,12 +5,26 @@ editor: visual
 
 ## Project plan
 
-When I know who is participating, I will arrange for a short teaching session to go through the materials and giving a few examples. Then I expect the work to go as follows:
+-   Scoring introduction arranged
 
--   Everyone scores the same 50 subjects, and I will calculate inter-rater-reliability statistics. If measures are not satisfying I will go through instructions again with some added feedback, and well have to try again. If/when satisfied,
+-   Everyone scores the same initial 50 subjects.
+    Inter-rater-reliability statistics are calculated on both the full
+    scale and a shortened scale with a Cohens 𝛋 of respectively .7 and
+    .8 as the goal before continued scoring. If measures are not
+    satisfying group session with scoring examples will be repeated.
 
--   I will allocate a specific number of subjects to each assessor (see [Allocations](down-to-work.qmd#sec-allocations)). You can score your allocated subjects on your personal computer (please ensure adequate lightning conditions) and at any time you like. You'll need assess to Citrix and PACS (see [Workflow](down-to-work.qmd#sec-suggested-workflow) for a suggested optimal workflow).
+-   When the project is continued, each assessor will have a numbe rof
+    subjects allocated for scoring/annotation (see
+    [Allocations](down-to-work.qmd#sec-allocations)). Annotation can be
+    performed on standard personal work station/computer (please ensure
+    adequate lightning conditions) and at any time. You'll need access
+    to Citrix and PACS (see
+    [Workflow](down-to-work.qmd#sec-suggested-workflow) for a suggested
+    optimal workflow).
 
--   During the scoring process I will be able to follow the progress and check-in with you to provide help if needed. And I'll make sure to create a few competitions along the way.
+-   During the scoring process I will be able to follow the progress and
+    check-in with you to provide help if needed. And I'll make sure to
+    create a few competitions along the way.
 
--   When all participants are scored, I will be running analyses and send the draft manuscript for comments.
+-   When all participants are scored, I will be running analyses and
+    send the draft manuscript for comments.
