@@ -5,6 +5,9 @@ editor: visual
 
 ## Project plan
 
+-   SVD scoring scale locked after slight modifications after consensus
+    decision within the assessor group.
+
 -   Scoring introduction arranged
 
 -   Everyone scores the same initial 50 subjects.
@@ -13,8 +16,8 @@ editor: visual
     .8 as the goal before continued scoring. If measures are not
     satisfying group session with scoring examples will be repeated.
 
--   When the project is continued, each assessor will have a numbe rof
-    subjects allocated for scoring/annotation (see
+-   After the first assessment relibility phase, each assessor will have
+    a number of subjects allocated for scoring/annotation (see
     [Allocations](down-to-work.qmd#sec-allocations)). Annotation can be
     performed on standard personal work station/computer (please ensure
     adequate lightning conditions) and at any time. You'll need access

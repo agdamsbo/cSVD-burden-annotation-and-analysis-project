@@ -1,3 +1,5 @@
+# renv::install(paste0("agdamsbo/",c("REDCapCAST")))
+
 ################################################################################
 ########
 ########      TALOS
@@ -66,15 +68,15 @@ redcap_get_n <- function(key = "SVD_REDCAP_API") {
 #'
 #' @return tibble with modified data
 #' @examples
-#' ds |> modify_data_talos(index=0,trial="TALOS")
+#' ds |> modify_data_talos(index = 0, trial = "TALOS")
 modify_data_talos <- function(data,
-                        index = redcap_get_n(),
-                        trial,
-                        id.var = inkl_rnumb,
-                        cpr.var = cpr,
-                        name.var = talos_inkl03x,
-                        date.var = talos_basis02a,
-                        time.var = talos_basis02b) {
+                              index = redcap_get_n(),
+                              trial,
+                              id.var = inkl_rnumb,
+                              cpr.var = cpr,
+                              name.var = talos_inkl03x,
+                              date.var = talos_basis02a,
+                              time.var = talos_basis02b) {
   ids <- seq_len(nrow(data)) + (index)
 
   data |>
@@ -106,10 +108,10 @@ modify_data_talos <- function(data,
 #' @examples
 #' data <- import_resist()
 #' skimr::skim(data)
-import_resist <- function(key = "RESIST-MIGRATION",keyring = "REDCAP_APIs",service="redcapAPI",
-                         vars = c("resistid", "cpr", "navn", "scan_dato_tid", "afdelingid", "target_population")) {
+import_resist <- function(key = "RESIST-MIGRATION", keyring = "REDCAP_APIs", service = "redcapAPI",
+                          vars = c("resistid", "cpr", "navn", "scan_dato_tid", "afdelingid", "target_population")) {
   REDCapR::redcap_read(
-    redcap_uri = "https://redcap.au.dk/api/", token = keyring::key_get(service=service, username = key, keyring = keyring),
+    redcap_uri = "https://redcap.au.dk/api/", token = keyring::key_get(service = service, username = key, keyring = keyring),
     fields = vars
   )$data
 }
@@ -123,12 +125,15 @@ import_resist <- function(key = "RESIST-MIGRATION",keyring = "REDCAP_APIs",servi
 #' @export
 #'
 #' @examples
-#' resist_aarhus <- import_redcap(key = "RESIST-MIGRATION",keyring = "REDCAP_APIs",service="redcapAPI",
-#' vars = c("resistid", "cpr", "navn", "scan_dato_tid", "afdelingid", "target_population")) |>
-#' filter_resist(site = 1, target = 1, datetime.var="scan_dato_tid")
+#' resist_aarhus <- import_redcap(
+#'   key = "RESIST-MIGRATION", keyring = "REDCAP_APIs", service = "redcapAPI",
+#'   vars = c("resistid", "cpr", "navn", "scan_dato_tid", "afdelingid", "target_population")
+#' ) |>
+#'   filter_resist(site = 1, target = 1, datetime.var = "scan_dato_tid")
 filter_resist <- function(data, site, target, datetime.var) {
-  data |> dplyr::filter(afdelingid %in% site) |>
-      dplyr::filter(target_population %in% target) |>
+  data |>
+    dplyr::filter(afdelingid %in% site) |>
+    dplyr::filter(target_population %in% target) |>
     dplyr::filter(!is.na(datetime.var))
 }
 
@@ -140,14 +145,14 @@ filter_resist <- function(data, site, target, datetime.var) {
 #'
 #' @return tibble with modified data
 #' @examples
-#' resist_aarhus |> modify_data_resist(trial="RESIST", id.var = resistid, datetime.var = scan_dato_tid, name.var = navn)
+#' resist_aarhus |> modify_data_resist(trial = "RESIST", id.var = resistid, datetime.var = scan_dato_tid, name.var = navn)
 modify_data_resist <- function(data,
-                        index = redcap_get_n(),
-                        trial,
-                        id.var = inkl_rnumb,
-                        cpr.var = cpr,
-                        datetime.var,
-                        name.var = talos_inkl03x) {
+                               index = redcap_get_n(),
+                               trial,
+                               id.var = inkl_rnumb,
+                               cpr.var = cpr,
+                               datetime.var,
+                               name.var = talos_inkl03x) {
   ids <- seq_len(nrow(data)) + (index)
 
   data |>
@@ -181,7 +186,9 @@ modify_data_resist <- function(data,
 #'   filter_talos_site() |>
 #'   modify_data() |>
 #'   write2db()
-#' resist_ds <- import_resist() |> filter_resist() |> modify_data_resist()
+#' resist_ds <- import_resist() |>
+#'   filter_resist() |>
+#'   modify_data_resist()
 #' resist_ds |> write2db()
 write2db <- function(data, key = "SVD_REDCAP_API") {
   REDCapR::redcap_write(
@@ -253,7 +260,9 @@ arrange_record_id <- function(data, remove = "svd_") {
 #' @examples
 #' data <- read_instrument(key = "SVD_REDCAP_API", instrument = "svd_score")
 #' basis_ds <- read_instrument(key = "SVD_REDCAP_API", instrument = "basis")
-#' basis_ds |> arrange_record_id() |> head(100)
+#' basis_ds |>
+#'   arrange_record_id() |>
+#'   head(100)
 read_instrument <- function(key = "SVD_REDCAP_API", instrument = "svd_score", raw_label = "raw") {
   REDCapCAST::read_redcap_tables(
     uri = "https://redcap.au.dk/api/", token = keyring::key_get(key),
@@ -302,11 +311,15 @@ inter_rater_data <- function(data) {
 #'
 #' @examples
 #' data <- read_instrument() |> inter_rater_data()
-simple_score <- function(data){
-  data |> dplyr::transmute(microbleed=dplyr::if_else(svd_microbleed<1,0,1),
-                           lacunes=dplyr::if_else(svd_lacunes<1,0,1),
-                           wmh=dplyr::if_else(svd_wmh<2,0,1),
-                           atrophy=dplyr::if_else(svd_atrophy<2,0,1))
+#' data |> simple_score()
+simple_score <- function(data) {
+  data |> dplyr::transmute(record_id, svd_user,
+    microbleed = dplyr::if_else(svd_microbleed < 1, 0, 1),
+    lacunes = dplyr::if_else(svd_lacunes < 1, 0, 1),
+    wmh = dplyr::if_else(svd_wmh < 2, 0, 1),
+    atrophy = dplyr::if_else(svd_atrophy < 2, 0, 1),
+    score = microbleed + lacunes + wmh + atrophy
+  )
 }
 
 
@@ -319,30 +332,104 @@ simple_score <- function(data){
 #'
 #' @examples
 #' irr_sample |> inter_rater_calc()
-#' read_instrument() |>
-#'   inter_rater_data() |>
-#'   inter_rater_calc()
+#' data <- read_instrument() |>
+#'   inter_rater_data()
+#' data |> inter_rater_calc()
 inter_rater_calc <- function(data) {
-  data |> tidycomm::test_icr(unit_var = record_id, coder_var = svd_user, fleiss_kappa = TRUE)
+  data |> tidycomm::test_icr(unit_var = record_id, coder_var = svd_user, fleiss_kappa = TRUE, na.omit = TRUE)
 }
 
 #' Upload assessor allocation
 #'
-#' @param data
+#' @param path allocation table path
 #'
 #' @return
 #' @export
 #'
 #' @examples
-#' format_assessors() |> write2db()
-format_assessors <- function(path="data/allocation.csv"){
+#' allocate_assessors() |> write2db()
+allocate_assessors <- function(path = "data/allocation.csv") {
   ds <- read.csv(here::here(path)) |> na.omit()
 
-  seq_len(nrow(ds)) |> lapply(function(x){
-    ds[x,] |> dplyr::tibble(record_id=paste0("svd_",seq(start,stop)),
-                       allocated_assessor=assessor) |>
-      dplyr::select(record_id,allocated_assessor)
-  }) |> dplyr::bind_rows()
-
+  seq_len(nrow(ds)) |>
+    lapply(function(x) {
+      ds[x, ] |>
+        dplyr::tibble(
+          record_id = paste0("svd_", seq(start, stop)),
+          allocated_assessor = assessor
+        ) |>
+        dplyr::select(record_id, allocated_assessor)
+    }) |>
+    dplyr::bind_rows()
 }
 
+#' Cuts hms data into intervals
+#'
+#' @param data data
+#' @param breaks specified breaks. Character vector
+#' @param labels desired labels. Breaks are used if NULL.
+#'
+#' @return
+#' @export
+#'
+time_cutter <- function(data,
+                        breaks = c("00:00:00", "12:00:00", "23:59:00"),
+                        labels = c("AM", "PM")) {
+  if (!"hms" %in% class(data)) stop("Data has to be of class 'hms'")
+  if (length(breaks) - 1 != length(labels) | is.null(labels)) {
+    message("Generic labels are used")
+    labels <- seq_len(length(breaks) - 1) |>
+      lapply(\(x){
+        glue::glue("[{substr(breaks,1,5)[x]}-{substr(breaks,1,5)[x+1]}]")
+      }) |>
+      purrr::list_c()
+  }
+
+  cut(lubridate::ymd_hms(paste(Sys.Date(), data)),
+    breaks = lubridate::ymd_hms(paste(Sys.Date(), breaks)),
+    labels = labels
+  )
+}
+
+#' Identify subjects with missing assesment
+#'
+#' @param data data
+#'
+#' @return
+#' @export
+#'
+who_is_missing <- function(data) {
+  data |>
+    dplyr::group_by(record_id) |>
+    dplyr::group_split() |>
+    (\(x){
+      unique(dplyr::bind_rows(x)[["record_id"]])[!purrr::list_c(lapply(x, nrow)) == length(unique(dplyr::bind_rows(x)[["svd_user"]]))]
+    })()
+}
+
+
+#' Replace multiple values in a vector with a named key
+#'
+#' @param data vector to replace
+#' @param key named character vector with old values named with new values
+#' @param keep.non.keyed keep non-keyed values or give NA
+#'
+#' @return character vector
+#' @export
+#'
+#' @examples
+#' ds <- sample(1:6, 20, replace = TRUE)
+#' multi_replace(ds, key = c("3" = 1, "4" = 2, "8" = 3, "HEY" = 4, "0" = 5))
+#' multi_replace(ds, key = c("3" = 1, "4" = 2, "8" = 3, "HEY" = 4, "0" = 5), keep.non.keyed = FALSE)
+multi_replace <- function(data, key = assessor_key, keep.non.keyed = TRUE) {
+  trans <- names(key)[match(data, key, nomatch = NA)]
+ if (any(is.na(trans))){
+   message("Mind that the key is incomplete")
+ }
+  if (keep.non.keyed) {
+    data[data %in% key] <- trans[!is.na(trans)]
+    data
+  } else {
+    trans
+  }
+}

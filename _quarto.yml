@@ -14,8 +14,8 @@ website:
         text: Project plan
       - href: doc/down-to-work.qmd
         text: Annotation
-      # - href: doc/status.qmd
-      #   text: Status
+      - href: doc/status.qmd
+        text: Status
       - text: Resources
         menu:
         - href: doc/svd-score.qmd

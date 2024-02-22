@@ -1,0 +1,94 @@
+---
+title: Lifestyle factors and small vessel disease in stroke patients
+---
+
+## Background
+
+Stroke is the leading cause of acquired disability and a common cause of
+death. In Denmark, 12.000 patients suffer from stroke yearly, with
+around 25 % being caused by small vessel disease.
+
+## Aim
+
+-   relation between life style factors and the burden of small vessel
+    disease in stroke patients.
+
+## Methods
+
+-   **Data:** Pooled data from TALOS+RESIST(+ENIGMA) (included
+    2013-2022)
+
+-   **Main outcome:** Visual Assessment of SVD burden on acute MR scan
+    (pragmatic version)
+
+-   **Covariates:** Clinical data includes pre stroke physical activity
+    (PA), chronical diseases (diabetes, hypertension, Afib, previous
+    myocardial infarction), stroke severity
+
+-   **Patients:** \~ 1000 patients
+
+## SVD assessment {.smaller}
+
+::: panel-tabset
+<!-- | **MRI features** | **Score** | -->
+
+<!-- |----|-:| -->
+
+### CAA features (*T2\* / SWI*)
+
+|                                                     |   Raw | Short |
+|-----------------------------------------------------|------:|------:|
+| **Number of microbleeds**                           |       |       |
+| 0                                                   |     0 |     0 |
+| 1                                                   |     1 |     1 |
+| 2-4                                                 |     2 |     1 |
+| 5-10                                                |     3 |     1 |
+| \>10                                                |     4 |     1 |
+| **Location of microbleeds -- no points**            |       |       |
+| Lobar, deep, or infratentorial (choose one or more) | L/D/I |    \- |
+| **Superficiel siderose**                            |       |       |
+| No siderosis                                        |     0 |    \- |
+| 1 sulcus                                            |     1 |    \- |
+| \>1 sulcus                                          |     2 |    \- |
+
+### Lacunes (*FLAIR*)
+
+|                       | Raw | Short |
+|-----------------------|----:|------:|
+| **Number of lacunes** |     |       |
+| 0                     |   0 |     0 |
+| 12                    |   1 |     1 |
+| 2                     |   2 |     1 |
+| 3--5                  |   3 |     1 |
+| \>5                   |   4 |     1 |
+
+### Fazekas score (*FLAIR*)
+
+|                                       | Raw | Short |
+|---------------------------------------|----:|------:|
+| **Deep white matter hyperintesities** |     |       |
+| 0: Absent                             |   0 |     0 |
+| 1: Punctate foci                      |   1 |     0 |
+| 2: Beginning confluence               |   2 |     1 |
+| 3: Large confluent areas              |   3 |     1 |
+
+### Atrophy (*FLAIR*)
+
+|                                                         | Raw | Short |
+|---------------------------------------------------------|----:|------:|
+| **GCA**                                                 |     |       |
+| 0: normal volume/no ventricular enlargement             |   0 |     0 |
+| 1: opening of sulci/mild ventricular enlargement        |   1 |     0 |
+| 2: volume loss of gyri/moderate ventricular enlargement |   2 |     1 |
+| 3: 'knife blade' atrophy/severe ventricular enlargement |   3 |     1 |
+:::
+
+## Perspectives
+
+-   impact of different life style factors on small vessel disease
+    burden among stroke patients
+
+-   prioritized intervention among patients
+
+-   estimate prognosis post stroke based on age, sex, prestroke PA,
+    co-morbidity, preexisting small vessel disease and stroke severity.

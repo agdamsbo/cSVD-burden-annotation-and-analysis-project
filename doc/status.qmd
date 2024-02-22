@@ -1,5 +1,6 @@
 ---
 title: "Project status"
+date: last-modified
 editor: visual
 ---
 
@@ -13,3 +14,128 @@ Below is an overview to get a project status and timeline.
 | ESOC 2024 (abstract submitted)                    | 14\. May 2024      |
 
 : Project timeline
+
+## Annotation progress
+
+```{r}
+#| eval: true
+#| echo: false
+#| message: false
+source(here::here("data_local/local.R"))
+source(here::here("R/functions.R"))
+```
+
+```{r}
+#| eval: false
+# Get latest REDCapCAST
+renv::install("agdamsbo/REDCapCAST")
+```
+
+```{r}
+#| eval: true
+#| echo: false
+#| message: false
+data <- REDCapCAST::read_redcap_instrument(key = "SVD_REDCAP_API", instrument = "svd_score", uri = "https://redcap.au.dk/api/")
+```
+
+```{r}
+#| eval: true
+#| echo: false
+#| message: false
+cleaned <- data |>
+  dplyr::group_by(record_id) |>
+  dplyr::group_split() |>
+  lapply(\(x){
+    if (any(x[["svd_perf"]] == 2)) {
+      NULL
+    } else {
+      x
+    }
+  }) |>
+  purrr::compact() |>
+  dplyr::bind_rows() |>
+  arrange_record_id() |>
+  dplyr::mutate(svd_user = multi_replace(svd_user))
+```
+
+```{r}
+#| include: true
+#| eval: true
+#| fig-cap: Look out for the deadline rush
+#| echo: true
+#| code-fold: true
+cleaned |>
+  dplyr::select(c(svd_user, svd_date)) |>
+  (\(x){
+    ds <- x |>
+      dplyr::count(svd_user) |>
+      dplyr::mutate(label = glue::glue("{svd_user} (Total: {n})"))
+    x |> dplyr::mutate(svd_user = multi_replace(svd_user,
+      key = setNames(ds$svd_user, ds$label)
+    ))
+  })() |>
+  dplyr::filter(svd_date>"2024-01-26") |> 
+  #
+  # dplyr::count(svd_user,time_gr) |>
+  # ggplot2::ggplot(ggplot2::aes(x=time_gr, y=n, fill=svd_user))+
+  # ggplot2::geom_col(position="dodge")+
+  #
+  ggplot2::ggplot(ggplot2::aes(x = svd_date, fill = svd_user)) +
+  ggplot2::geom_bar() +
+  ggplot2::labs(title = "Scoring by day after project launch", fill = "Assessor") +
+  ggplot2::xlab("Date") +
+  ggplot2::ylab("N")
+```
+
+```{r}
+#| include: true
+#| eval: true
+#| echo: true
+#| code-fold: true
+#| fig-cap: When is the free time?
+cleaned |>
+  dplyr::select(c(svd_user, svd_time)) |>
+  dplyr::mutate(time_gr = time_cutter(svd_time, breaks = c(
+    "00:00:00",
+    "08:00:00",
+    "12:00:00",
+    "16:00:00",
+    "20:00:00",
+    "23:59:00"
+  ))) |>
+  (\(x){
+    ds <- x |>
+      dplyr::count(svd_user) |>
+      dplyr::mutate(label = glue::glue("{svd_user} (Total: {n})"))
+    x |> dplyr::mutate(svd_user = multi_replace(svd_user,
+      key = setNames(ds$svd_user, ds$label)
+    ))
+  })() |>
+  #
+  # dplyr::count(svd_user,time_gr) |>
+  # ggplot2::ggplot(ggplot2::aes(x=time_gr, y=n, fill=svd_user))+
+  # ggplot2::geom_col(position="dodge")+
+  #
+  ggplot2::ggplot(ggplot2::aes(x = time_gr, fill = svd_user)) +
+  ggplot2::geom_bar() +
+  ggplot2::labs(title = "Scoring by time of day", fill = "Assessor") +
+  ggplot2::xlab("Time interval") +
+  ggplot2::ylab("N")
+```
+
+```{r}
+#| include: false
+cleaned |>
+  simple_score() |>
+  who_is_missing()
+```
+
+```{r}
+#| include: false
+cleaned |>
+  dplyr::count(svd_user) |>
+  dplyr::mutate(n = as.numeric(n)) |>
+  dplyr::arrange(n) |>
+  purrr::map_df(rev) |>
+  gt::gt()
+```
