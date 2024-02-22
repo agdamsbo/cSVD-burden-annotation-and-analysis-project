@@ -1,0 +1,15 @@
+{
+  "hash": "d75fa475270f3ead2f02d9820e19a732",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Data capturing instrument\"\ndate: last-modified\neditor: visual\ntoc: true\nbibliography: references.bib\n---\n\n::: {.cell}\n\n:::\n\n\n# Clinical data\n\nMinimal necessary clinical data for scoring are pooled and uploaded to a\nseparate data base.\n\nThe scripts used are fairly trivial, but can serve as inspirational. The\nfunctions used can [be found\nhere](https://raw.githubusercontent.com/agdamsbo/cSVD-burden-annotation-and-analysis-project/main/R/functions.R).\n\nThe simple pipeline is as follows\n\n\n::: {.cell}\n\n:::\n\n\n# Using REDCap\n\nAll clinical data capturing for this project is performed with\n[REDCap](https://projectredcap.org/).\n\nGet our most recent [data dictionary\nhere](https://raw.githubusercontent.com/agdamsbo/cSVD-burden-annotation-and-analysis-project/main/data/svd-datadictionary.csv)\nto inspect. Note that the text on a few fields are in Danish.\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

@@ -39,7 +39,7 @@ knitr:
     echo: false
 
 execute:
-  freeze: false
+  freeze: true
   echo: false
   eval: false
 
