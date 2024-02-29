@@ -139,3 +139,13 @@ cleaned |>
   purrr::map_df(rev) |>
   gt::gt()
 ```
+
+```{r}
+#| include: false
+#| comment: Age interval income cut proof of concept
+split(cleaned,dplyr::case_match(cleaned$redcap_repeat_instance,
+                                   1:4~"a",
+                                   5:8~"b")) |> lapply(\(x){
+                                     x |> dplyr::mutate(score_cut=stRoke::quantile_cut(svd_score,2))
+                                   }) |> dplyr::bind_rows()
+```
