@@ -70,11 +70,18 @@
     "text": "Suggested workflow\nIn REDCap:\n\nLogin to AU REDCap, open the “SVD-burden POOL” project and go to “Record Status Dashboard” (just follow this link)\nFrom the drop-down “Dashboard displayed”, choose the desired dashboard (there is one common for the first, and one for each assessor with allocated subjects and progress).\nOpen the “SVD score” instrument to start capturing the score.\n\nIf the “dot” is colored, the instrument already has been filled. Press the “+”-sign to create a new version (mainly necessary during the inter-rater-reliability testing, as each subject is only scored once)\n\nIn the top of the instrument, the patient CPR, name and admission time is printed as well as assessor allocated (should be you, but please check) and link to Citrix for convenience.\n\nIn Citrix/PACS:\n\nOpen the “Billeddiagnostik PACS” module (find it under “APPS” and “star” it the first time) and look up the patient using the CPR number copied from REDCap.\nPlease use the subject admission date and time as reference to select the correct scan and the exact date and time of the scan (fields are pre-filled with admission date and time).\nThe scan might take a minute or two to load from the storage server. A little patience is necessary. The first time, you can use this time to arrange your program windows for optimal workflow.\n\nMaximise the “PACS” window on the left half of yuor screen and “REDCap” on the left (to have controls line up in the middle and minimize cursor movement)\nNote that the REDCap is organized by MRI sequences (T2*/SWI and FLAIR) corresponding to how they are organized in PACS. The relevant sequences are usually found at the buttom of the list in PACS.\n\n\nIn REDCap:\n\nWhen done filling out all fields, you can save the data and go directly to the next subject by clicking “Save & Go To Next Record”\n\nThe last item is “Complete?”. Use “Incomplete” if interrupted, “Unverified” in case of doubt, “Complete” when completed.\nOn the right and at the end of the instrument, there are two blue boxes. The top is “Save & Exit Form”, the second have different options to choose from by clicking the arrow on the right. Choose “Save & Go To Next Record”. Then repeat step 3-8."
   },
   {
-    "objectID": "Notes.html",
-    "href": "Notes.html",
-    "title": "cSVD burden project",
+    "objectID": "doc/plan.html",
+    "href": "doc/plan.html",
+    "title": "Project plan",
     "section": "",
-    "text": "Notes:\n\nOvervej inklusion af simpel stroke klassifikation?\nbegrtæns til alene at inkludere RESIST? Samt evt ENIGMA for validering?"
+    "text": "SVD scoring scale locked after slight modifications after consensus decision within the assessor group.\nScoring introduction arranged\nEveryone scores the same initial 50 subjects. Inter-rater-reliability statistics are calculated on both the full scale and a shortened scale with a Cohens 𝛋 of respectively .7 and .8 as the goal before continued scoring. If measures are not satisfying group session with scoring examples will be repeated.\nAfter the first assessment relibility phase, each assessor will have a number of subjects allocated for scoring/annotation (see Allocations). Annotation can be performed on standard personal work station/computer (please ensure adequate lightning conditions) and at any time. You’ll need access to Citrix and PACS (see Workflow for a suggested optimal workflow).\nDuring the scoring process I will be able to follow the progress and check-in with you to provide help if needed. And I’ll make sure to create a few competitions along the way.\nWhen all participants are scored, I will be running analyses and send the draft manuscript for comments."
+  },
+  {
+    "objectID": "doc/plan.html#project-plan",
+    "href": "doc/plan.html#project-plan",
+    "title": "Project plan",
+    "section": "",
+    "text": "SVD scoring scale locked after slight modifications after consensus decision within the assessor group.\nScoring introduction arranged\nEveryone scores the same initial 50 subjects. Inter-rater-reliability statistics are calculated on both the full scale and a shortened scale with a Cohens 𝛋 of respectively .7 and .8 as the goal before continued scoring. If measures are not satisfying group session with scoring examples will be repeated.\nAfter the first assessment relibility phase, each assessor will have a number of subjects allocated for scoring/annotation (see Allocations). Annotation can be performed on standard personal work station/computer (please ensure adequate lightning conditions) and at any time. You’ll need access to Citrix and PACS (see Workflow for a suggested optimal workflow).\nDuring the scoring process I will be able to follow the progress and check-in with you to provide help if needed. And I’ll make sure to create a few competitions along the way.\nWhen all participants are scored, I will be running analyses and send the draft manuscript for comments."
   },
   {
     "objectID": "index.html",
@@ -91,18 +98,46 @@
     "text": "This page is intended as a reference manual for accessors as well as other collaborators in annotating and analysing a large pooled, clinical dataset of stroke patients from Aarhus University Hospital included in different research projects.\n\n\nSVD in the brain is still uncharted territory. We have two large datasets (possibly supplemented with additional projects) on acute stroke patients that we have the opportunity to merge and link with data from MRI scans. The first project is to investigate the relationship between various lifestyle factors and the degree of SVD among stroke patients. We also plan to use the data for other projects in the future.\n\n\n\nNo widely used scoring system exists, that considers all elements of SVD on MRI. The Fazekas score is widely used, but only accounts for white matter hyperintensities (WMH).\nBased on existing studies, we have developed a scoring tool for this purpose, relying on FLAIR and T2*/SWI sequences from the acute scans. We are interested in microbleeds, superficial siderosis, previous lacunar infarcts, white matter hyperintensities, and atrophy.\nWe have created a minimal registration tool in REDCap, that will later be enriched with metadata on the scans."
   },
   {
-    "objectID": "doc/plan.html",
-    "href": "doc/plan.html",
-    "title": "Project plan",
+    "objectID": "Notes.html",
+    "href": "Notes.html",
+    "title": "cSVD burden project",
     "section": "",
-    "text": "SVD scoring scale locked after slight modifications after consensus decision within the assessor group.\nScoring introduction arranged\nEveryone scores the same initial 50 subjects. Inter-rater-reliability statistics are calculated on both the full scale and a shortened scale with a Cohens 𝛋 of respectively .7 and .8 as the goal before continued scoring. If measures are not satisfying group session with scoring examples will be repeated.\nAfter the first assessment relibility phase, each assessor will have a number of subjects allocated for scoring/annotation (see Allocations). Annotation can be performed on standard personal work station/computer (please ensure adequate lightning conditions) and at any time. You’ll need access to Citrix and PACS (see Workflow for a suggested optimal workflow).\nDuring the scoring process I will be able to follow the progress and check-in with you to provide help if needed. And I’ll make sure to create a few competitions along the way.\nWhen all participants are scored, I will be running analyses and send the draft manuscript for comments."
+    "text": "Notes:\n\nOvervej inklusion af simpel stroke klassifikation?\nbegrtæns til alene at inkludere RESIST? Samt evt ENIGMA for validering?"
   },
   {
-    "objectID": "doc/plan.html#project-plan",
-    "href": "doc/plan.html#project-plan",
-    "title": "Project plan",
+    "objectID": "doc/irr.html",
+    "href": "doc/irr.html",
+    "title": "Inter rater reliability",
     "section": "",
-    "text": "SVD scoring scale locked after slight modifications after consensus decision within the assessor group.\nScoring introduction arranged\nEveryone scores the same initial 50 subjects. Inter-rater-reliability statistics are calculated on both the full scale and a shortened scale with a Cohens 𝛋 of respectively .7 and .8 as the goal before continued scoring. If measures are not satisfying group session with scoring examples will be repeated.\nAfter the first assessment relibility phase, each assessor will have a number of subjects allocated for scoring/annotation (see Allocations). Annotation can be performed on standard personal work station/computer (please ensure adequate lightning conditions) and at any time. You’ll need access to Citrix and PACS (see Workflow for a suggested optimal workflow).\nDuring the scoring process I will be able to follow the progress and check-in with you to provide help if needed. And I’ll make sure to create a few competitions along the way.\nWhen all participants are scored, I will be running analyses and send the draft manuscript for comments."
+    "text": "Agreement is acceptable for all but atrophy. See calculations in the end.\nMy suggestion will be to re-plan. Instead of retraining, I will assign two assessors to each subject. On disagreement, consensus will be sought.\nWith 8 assessors helping out, each will get to perform a mean of ~250 assessments\n\nPros and cons to the new approach\n\n\n\n\n\n\nPros\nCons\n\n\n\n\nIncreased accuracy\nIncreased workload\n\n\nImproved data quality\nPossibly increased time use\n\n\nImproved chance of using the data for further projects\nDecreased chance of finishing on time\n\n\n\nAlternative: exclude atrophy as a biomarker. The HARNESS initiative as well as the FINESSE framework recommends exactly WMH, lacunes, microbleeds and atrophy as biomarkers.(Smith et al. 2019; Markus et al. 2022)"
+  },
+  {
+    "objectID": "doc/irr.html#short-version",
+    "href": "doc/irr.html#short-version",
+    "title": "Inter rater reliability",
+    "section": "",
+    "text": "Agreement is acceptable for all but atrophy. See calculations in the end.\nMy suggestion will be to re-plan. Instead of retraining, I will assign two assessors to each subject. On disagreement, consensus will be sought.\nWith 8 assessors helping out, each will get to perform a mean of ~250 assessments\n\nPros and cons to the new approach\n\n\n\n\n\n\nPros\nCons\n\n\n\n\nIncreased accuracy\nIncreased workload\n\n\nImproved data quality\nPossibly increased time use\n\n\nImproved chance of using the data for further projects\nDecreased chance of finishing on time\n\n\n\nAlternative: exclude atrophy as a biomarker. The HARNESS initiative as well as the FINESSE framework recommends exactly WMH, lacunes, microbleeds and atrophy as biomarkers.(Smith et al. 2019; Markus et al. 2022)"
+  },
+  {
+    "objectID": "doc/irr.html#litterature",
+    "href": "doc/irr.html#litterature",
+    "title": "Inter rater reliability",
+    "section": "Litterature",
+    "text": "Litterature\nStaals et al. (2014) reports Intraclass Correlation Coefficient of 0.68-0.92 depending on the biomarker. They use different aids to maximise the likelihood of agreement (reference pictures etc.).\nDepending on sources, Fleiss-Kappa or Intraclass Correlation Coefficient (ICC) are argued as the best meassure. Hallgren (2012) recommends using the ICC with multiple assessors and when scores are ordinal. Multiple performance measures are included.\nHere are a few discussions on the topic:\n\nresearchgate\ncookbook-for-r\nData\n\n\n\n\n\n\n\n\n\n\nsvd_user\nn\n\n\n\n\nABF\n52\n\n\nAGD\n52\n\n\nAMG\n1\n\n\nGA\n18\n\n\nJKM\n52\n\n\nKMØ\n52\n\n\nMFH\n52\n\n\nNLP\n52\n\n\nRAB\n52\n\n\nSBV\n52\n\n\n\n\n\n\n\n\n\nInter-rater-disagreement examples\nExample of overall score differences\n\n\n\n\n\n\n\n\n\nsvd_user\nsvd_quality\nsvd_microbleed\nsvd_microbleed_location___1\nsvd_microbleed_location___2\nsvd_microbleed_location___3\nsvd_siderose\nsvd_lacunes\nsvd_wmh\nsvd_atrophy\n\n\n\n\nSBV\n2\n0\n0\n0\n0\n0\n0\n3\n1\n\n\nAGD\n1\n0\n0\n0\n0\n0\n0\n3\n2\n\n\nKMØ\n2\n0\n0\n0\n0\n0\n0\n3\n1\n\n\nNLP\n2\n0\n0\n0\n0\n0\n0\n3\n2\n\n\nJKM\n2\n0\n0\n0\n0\n0\n0\n3\n2\n\n\nRAB\n2\n0\n0\n0\n0\n0\n0\n3\n1\n\n\nMFH\n1\n0\n0\n0\n0\n0\n0\n3\n1\n\n\nABF\n2\n0\n0\n0\n0\n0\n0\n3\n1\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nsvd_user\nmicrobleed\nlacunes\nwmh\natrophy\nscore\n\n\n\n\nSBV\n0\n0\n1\n0\n1\n\n\nAGD\n0\n0\n1\n1\n2\n\n\nKMØ\n0\n0\n1\n0\n1\n\n\nNLP\n0\n0\n1\n1\n2\n\n\nJKM\n0\n0\n1\n1\n2\n\n\nRAB\n0\n0\n1\n0\n1\n\n\nMFH\n0\n0\n1\n0\n1\n\n\nABF\n0\n0\n1\n0\n1"
+  },
+  {
+    "objectID": "doc/irr.html#calculations",
+    "href": "doc/irr.html#calculations",
+    "title": "Inter rater reliability",
+    "section": "Calculations",
+    "text": "Calculations\nOverall reliability measures on all variables\n\n\nWarning: Using an external vector in selections was deprecated in tidyselect 1.1.0.\nℹ Please use `all_of()` or `any_of()` instead.\n  # Was:\n  data %&gt;% select(.x)\n\n  # Now:\n  data %&gt;% select(all_of(.x))\n\nSee &lt;https://tidyselect.r-lib.org/reference/faq-external-vector.html&gt;.\n\n\n\n\n\n\n\n\n\nVariable\nAgreement\nKrippendorffs_Alpha\nFleiss_Kappa\nBrennan_Predigers_Kappa\nIntraclCorrCoef\n\n\n\n\nsvd_quality\n0.7884615\n0.3909154\n0.389447748\n0.7867959\n3.971007e-01\n\n\nsvd_microbleed\n0.6923077\n0.5344182\n0.533296331\n0.6923038\n8.384529e-01\n\n\nsvd_microbleed_location___1\n0.7884615\n0.6058272\n0.604877423\n0.7867959\n6.102045e-01\n\n\nsvd_microbleed_location___2\n0.8269231\n0.5509859\n0.549903896\n0.8255603\n5.551565e-01\n\n\nsvd_microbleed_location___3\n0.9230769\n0.4543851\n0.453070386\n0.9224712\n4.581498e-01\n\n\nsvd_siderose\n0.9795918\n0.0000000\n-0.002557545\n0.9794311\n-1.275022e-15\n\n\nsvd_lacunes\n0.4375000\n0.4987262\n0.497417440\n0.4374928\n7.205385e-01\n\n\nsvd_wmh\n0.1730769\n0.5336626\n0.532538933\n0.1730264\n7.904484e-01\n\n\nsvd_atrophy\n0.1960784\n0.2637533\n0.261944363\n0.1960294\n4.579298e-01\n\n\n\n\n\n\n\n\nReliability on simplified 0-4 scale.\n\n\n\n\n\n\n\n\n\nVariable\nAgreement\nKrippendorffs_Alpha\nFleiss_Kappa\nBrennan_Predigers_Kappa\nIntraclCorrCoef\n\n\n\n\nmicrobleed\n0.7307692\n0.6595911\n0.6587709\n0.7286493\n0.6635782\n\n\nlacunes\n0.6041667\n0.7007082\n0.6999267\n0.6010499\n0.7050209\n\n\nwmh\n0.6538462\n0.7193592\n0.7186830\n0.6511205\n0.7231512\n\n\natrophy\n0.7058824\n0.3095880\n0.3078916\n0.7035665\n0.3192449\n\n\nscore\n0.2553191\n0.5176905\n0.5164044\n0.2553096\n0.8003456"
+  },
+  {
+    "objectID": "doc/irr.html#conclusion",
+    "href": "doc/irr.html#conclusion",
+    "title": "Inter rater reliability",
+    "section": "Conclusion",
+    "text": "Conclusion\nFor the simplified score, the Intraclass Correlations Coefficients for microbleed, lacunes, wmh, atrophy and score is 0.66, 0.71, 0.72, 0.32 and 0.8 respectively."
   },
   {
     "objectID": "doc/status.html",
