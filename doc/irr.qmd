@@ -1,0 +1,138 @@
+---
+title: "Inter rater reliability"
+date: last-modified
+format: 
+  html: default
+  pdf: default
+  docx: default
+editor: visual
+execute: 
+  message: false
+  eval: true
+bibliography: references.bib
+toc: true
+---
+
+## Short version
+
+Agreement is acceptable for all but atrophy. See calculations in the
+end.
+
+My suggestion will be to re-plan. Instead of retraining, I will assign
+two assessors to each subject. On disagreement, consensus will be
+sought.
+
+With 8 assessors helping out, each will get to perform a mean of \~250
+assessments
+
+| *Pros*                                                 | *Cons*                                |
+|--------------------------------------------------------|---------------------------------------|
+| Increased accuracy                                     | Increased workload                    |
+| Improved data quality                                  | Possibly increased time use           |
+| Improved chance of using the data for further projects | Decreased chance of finishing on time |
+
+: Pros and cons to the new approach
+
+**Alternative**: exclude atrophy as a biomarker. The HARNESS initiative
+as well as the FINESSE framework recommends exactly WMH, lacunes,
+microbleeds and atrophy as biomarkers.[@smith2019; @markus2022]
+
+## Litterature
+
+@staals2014 reports Intraclass Correlation Coefficient of 0.68-0.92
+depending on the biomarker. They use different aids to maximise the
+likelihood of agreement (reference pictures etc.).
+
+Depending on sources, Fleiss-Kappa or Intraclass Correlation Coefficient
+(ICC) are argued as the best meassure. @hallgren2012 recommends using
+the ICC with multiple assessors and when scores are ordinal. Multiple
+performance measures are included.
+
+Here are a few discussions on the topic:
+
+-   [researchgate](https://www.researchgate.net/post/Calculating-a-weighted-kappa-for-multiple-raters)
+
+-   [cookbook-for-r](http://www.cookbook-r.com/Statistical_analysis/Inter-rater_reliability/)
+
+    ## Data
+
+```{r}
+source(here::here("R/functions.R"))
+source(here::here("data_local/local.R"))
+```
+
+```{r}
+#| code-summary: "All SVD annotation data is retrieved from the server, store as tibble and replace username with initials"
+#| message: false
+ds_raw <- REDCapCAST::read_redcap_instrument(uri = "https://redcap.au.dk/api/", key = "SVD_REDCAP_API", instrument = "svd_score") |>
+  tibble::tibble() |>
+  dplyr::mutate(svd_user = multi_replace(svd_user))
+```
+
+```{r}
+#| code-summary: "Basic cleaning with exclusion of duplicated entries and subjects with no scan available"
+ds_clean <- ds_raw |> svd_score_clean()
+```
+
+```{r}
+#| code-summary: Status of completed subjects per assessor
+ds_clean |>
+  dplyr::group_by(svd_user) |>
+  dplyr::count() |>
+  dplyr::ungroup() |>
+  gt::gt()
+ds <- ds_clean |> filter_incomplete_users()
+```
+
+### Inter-rater-disagreement examples
+
+Example of overall score differences
+
+```{r}
+#| code-summary: Full SVD scoring
+# Subsetting index for examples to avoid printng id
+indx <- unique(ds$record_id)[[sample(1:50, 1)]]
+
+ds_irr <- ds |> inter_rater_data()
+
+ds_irr |>
+  dplyr::filter(record_id == indx) |>
+  dplyr::select(-record_id) |>
+  gt::gt()
+```
+
+```{r}
+#| code-summary: Simplified SVD scoring
+ds_simple <- ds_irr |> simple_score()
+ds_simple |>
+  dplyr::filter(record_id == indx) |>
+  dplyr::select(-record_id) |>
+  gt::gt()
+```
+
+## Calculations
+
+Overall reliability measures on all variables
+
+```{r}
+#| message: false
+ds_irr |>
+  irr_icc_calc() |>
+  gt::gt()
+```
+
+Reliability on simplified 0-4 scale.
+
+```{r}
+#| message: false
+irr_simple <- ds_simple |>
+  irr_icc_calc()
+irr_simple |>
+  gt::gt()
+```
+
+## Conclusion
+
+For the simplified score, the Intraclass Correlations Coefficients for
+`r chr_collapse(irr_simple[["Variable"]])` is
+`r chr_collapse(irr_simple[["IntraclCorrCoef"]])` respectively.

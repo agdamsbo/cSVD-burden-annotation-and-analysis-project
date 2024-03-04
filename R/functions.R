@@ -272,6 +272,51 @@ read_instrument <- function(key = "SVD_REDCAP_API", instrument = "svd_score", ra
 }
 
 
+#' Clean SVD data by filtering on repeated and on any marking as data not present
+#'
+#' @param data data set
+#'
+#' @return tibble
+#' @export
+#'
+svd_score_clean <- function(data) {
+  # Filtering non-performed annotations out
+  filtered <- split(data, data$record_id)[!split(data, data$record_id) |>
+    purrr::map(\(x){
+      any(x$svd_perf == 2)
+    }) |>
+    purrr::list_c()] |> dplyr::bind_rows()
+
+  # Keeps the first instance in case of the same user having filled out more than one
+  split(filtered, filtered$record_id) |>
+    purrr::map(\(x){
+      x[!duplicated(x$svd_user), ]
+    }) |>
+    dplyr::bind_rows() |>
+    arrange_record_id()
+}
+
+
+#' Filtering out users, that did not complete all annotations
+#'
+#' @param data data
+#'
+#' @return data.frame or tibble
+#' @export
+
+filter_incomplete_users <- function(data) {
+  data |> (\(x){
+    nall <- x |>
+      dplyr::group_by(svd_user) |>
+      dplyr::count() |>
+      dplyr::ungroup() |>
+      dplyr::filter(n == max(n)) |>
+      dplyr::select(svd_user)
+
+    x |> dplyr::filter(svd_user %in% nall[[1]])
+  })()
+}
+
 #' Cleaning data for IRR calculation
 #'
 #' @param key
@@ -285,20 +330,19 @@ read_instrument <- function(key = "SVD_REDCAP_API", instrument = "svd_score", ra
 inter_rater_data <- function(data) {
   data |>
     arrange_record_id() |>
-    dplyr::filter(svd_perf == 1) |>
-    dplyr::select(
-      record_id,
-      svd_user,
-      svd_quality,
-      svd_microbleed,
-      svd_microbleed_location___1,
-      svd_microbleed_location___2,
-      svd_microbleed_location___3,
-      svd_siderose,
-      svd_lacunes,
-      svd_wmh,
-      svd_atrophy
-    )
+    dplyr::select(tidyselect::all_of(
+      c("record_id",
+      "svd_user",
+      "svd_quality",
+      "svd_microbleed",
+      "svd_microbleed_location___1",
+      "svd_microbleed_location___2",
+      "svd_microbleed_location___3",
+      "svd_siderose",
+      "svd_lacunes",
+      "svd_wmh",
+      "svd_atrophy"
+    )))
 }
 
 
@@ -313,19 +357,21 @@ inter_rater_data <- function(data) {
 #' data <- read_instrument() |> inter_rater_data()
 #' data |> simple_score()
 simple_score <- function(data) {
-  data |> dplyr::transmute(record_id, svd_user,
-    microbleed = dplyr::if_else(svd_microbleed < 1, 0, 1),
-    lacunes = dplyr::if_else(svd_lacunes < 1, 0, 1),
-    wmh = dplyr::if_else(svd_wmh < 2, 0, 1),
-    atrophy = dplyr::if_else(svd_atrophy < 2, 0, 1),
-    score = microbleed + lacunes + wmh + atrophy
-  )
+  data |>
+    arrange_record_id() |>
+    dplyr::transmute(record_id, svd_user,
+      microbleed = dplyr::if_else(svd_microbleed < 1, 0, 1),
+      lacunes = dplyr::if_else(svd_lacunes < 1, 0, 1),
+      wmh = dplyr::if_else(svd_wmh < 2, 0, 1),
+      atrophy = dplyr::if_else(svd_atrophy < 2, 0, 1),
+      score = microbleed + lacunes + wmh + atrophy
+    )
 }
 
 
 #' Inter rater reliability calculations
 #'
-#' @param data
+#' @param data data
 #'
 #' @return
 #' @export tibble
@@ -336,8 +382,70 @@ simple_score <- function(data) {
 #'   inter_rater_data()
 #' data |> inter_rater_calc()
 inter_rater_calc <- function(data) {
-  data |> tidycomm::test_icr(unit_var = record_id, coder_var = svd_user, fleiss_kappa = TRUE, na.omit = TRUE)
+  data |> tidycomm::test_icr(
+    unit_var = record_id,
+    coder_var = svd_user,
+    holsti = FALSE,
+    fleiss_kappa = TRUE,
+    brennan_prediger = TRUE,
+    na.omit = TRUE
+  )
 }
+
+#' ICC calculations
+#'
+#' @param data minimal dataset with only relevant variables
+#' @param unit_var subject var
+#' @param coder_var rater var
+#'
+#' @return
+#' @export
+#'
+#' @examples
+#' # ds_simple |> icc_multi(unit_var=record_id, coder_var=svd_user)
+icc_multi <- function(data, unit_var = record_id, coder_var = svd_user) {
+  # The function to calculate ICC
+  icc_calc <- function(data) {
+    irr::icc(data, model = "twoway", type = "agreement", unit = "single") |>
+      purrr::pluck("value")
+  }
+
+  # Names of provided variables
+  suppressWarnings(nms <- data |>
+    dplyr::select(-{{ unit_var }}, -{{ coder_var }}) |>
+    names())
+
+  # ICC calculation for each variable
+  nms |>
+    lapply(function(.x) {
+      tidycomm:::unit_coder_matrix(data,
+        unit_var = {{ unit_var }},
+        coder_var = {{ coder_var }},
+        test_var = .x
+      )
+    }) |>
+    purrr::map(icc_calc) |>
+    purrr::list_c() |>
+    (\(.y){
+      tibble::tibble(
+        Variable = nms,
+        IntraclCorrCoef = .y
+      )
+    })()
+}
+
+
+#' Join IRR and ICC calculations
+#'
+#' @param data data
+#'
+#' @return tibble
+#' @export
+irr_icc_calc <- function(data) {
+  dplyr::left_join(inter_rater_calc(data), icc_multi(data)) |>
+    dplyr::select(-tidyselect::all_of(c("n_Coders", "n_Categories", "Level", "n_Units")))
+}
+
 
 #' Upload assessor allocation
 #'
@@ -358,7 +466,10 @@ allocate_assessors <- function(path = "data/allocation.csv") {
           record_id = paste0("svd_", seq(start, stop)),
           allocated_assessor = assessor
         ) |>
-        dplyr::select(record_id, allocated_assessor)
+        dplyr::select(tidyselect::all_of(c(
+          "record_id",
+          "allocated_assessor"
+        )))
     }) |>
     dplyr::bind_rows()
 }
@@ -423,13 +534,30 @@ who_is_missing <- function(data) {
 #' multi_replace(ds, key = c("3" = 1, "4" = 2, "8" = 3, "HEY" = 4, "0" = 5), keep.non.keyed = FALSE)
 multi_replace <- function(data, key = assessor_key, keep.non.keyed = TRUE) {
   trans <- names(key)[match(data, key, nomatch = NA)]
- if (any(is.na(trans))){
-   message("Mind that the key is incomplete")
- }
+  if (any(is.na(trans))) {
+    message("Mind that the key is incomplete")
+  }
   if (keep.non.keyed) {
     data[data %in% key] <- trans[!is.na(trans)]
     data
   } else {
     trans
   }
+}
+
+#' Collapse vector to readable sentence
+#'
+#' @param data vector
+#' @param sep.last last sep word. Default is "and"
+#'
+#' @return character vector length 1
+#' @export
+#'
+#' @examples
+#' rownames(mtcars)[1:4] |> chr_collapse()
+chr_collapse <- function(data, sep.last = "and") {
+  if (is.numeric(data)) {
+    data <- round(data, 2)
+  }
+  paste(paste(data[-length(data)], collapse = ", "), sep.last, data[length(data)])
 }
