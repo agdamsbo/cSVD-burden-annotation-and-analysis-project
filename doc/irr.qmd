@@ -134,5 +134,5 @@ irr_simple |>
 ## Conclusion
 
 For the simplified score, the Intraclass Correlations Coefficients for
-`r chr_collapse(irr_simple[["Variable"]])` is
+`r chr_collapse(irr_simple[["Variable"]])` are
 `r chr_collapse(irr_simple[["IntraclCorrCoef"]])` respectively.
