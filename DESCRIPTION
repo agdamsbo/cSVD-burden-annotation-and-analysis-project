@@ -29,7 +29,8 @@ Imports:
     dplyr,
     DiagrammeR,
     stRoke,
-    irr
+    irr,
+    readODS
 Encoding: UTF-8
 License: CC BY 4.0
 URL: https://github.com/agdamsbo/cSVD-burden-annotation-and-analysis-project

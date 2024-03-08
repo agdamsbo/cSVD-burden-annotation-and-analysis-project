@@ -1,0 +1,48 @@
+---
+title: "Subject allocation setup"
+date: last-modified
+format: 
+  html: default
+editor: source
+---
+
+## On allocating assessors
+
+Thinking a lot back and forth, I did consider
+
+-   REDCap project with surveys for assessors to request more subjects
+
+-   Shiny app with similar functionality
+
+-   Oldschool spreadsheet with manual updates
+
+Conclusion: KEEP IT SIMPLE
+
+We go with the last option!
+
+These are the currently allocated subjects
+
+```{r}
+source(here::here("data_local/local.R"))
+assessor_key2
+ds <- get_allocations()
+```
+
+This is source data:
+
+```{r}
+system2("open", "data/allocation.ods")
+```
+
+Show allocations
+
+```{r}
+allos <- allocate_assessors(key=assessor_key2)
+allos |> dplyr::filter(allocated_assessor!="all") |> gt::gt()
+```
+
+Write updated data frame of assessors:
+
+```{r}
+allos |> write2db()
+```

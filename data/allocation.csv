@@ -1,13 +1,4 @@
-assessor,start,stop
-all,1,65
-AGD,66,150
-SBV,,
-MFH,,
-JKM,,
-RAB,,
-KMØ,,
-CZS,,
-NLP,,
-GA,,
-ABF,,
-AMG,,
+assessor,start,stop,assessor2,start2,stop2
+all,1,65,all,1,65
+AGD,66,150,,,
+

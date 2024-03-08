@@ -446,6 +446,21 @@ irr_icc_calc <- function(data) {
     dplyr::select(-tidyselect::all_of(c("n_Coders", "n_Categories", "Level", "n_Units")))
 }
 
+################################################################################
+########
+########      Assessor allocation
+########
+################################################################################
+
+
+get_allocations <- function(key = "SVD_REDCAP_API") {
+  REDCapR::redcap_read(
+    redcap_uri = "https://redcap.au.dk/api/",
+    token = keyring::key_get(key),
+    fields = c("record_id","allocated_assessor","allocated_assessor_2")
+  )$data|> dplyr::select(c("record_id","allocated_assessor","allocated_assessor_2")) |>
+    arrange_record_id() |> dplyr::filter(allocated_assessor!="all")
+}
 
 #' Upload assessor allocation
 #'
@@ -456,15 +471,18 @@ irr_icc_calc <- function(data) {
 #'
 #' @examples
 #' allocate_assessors() |> write2db()
-allocate_assessors <- function(path = "data/allocation.csv") {
-  ds <- read.csv(here::here(path)) |> na.omit()
+allocate_assessors <- function(path = "data/allocation.ods",key) {
+  ds <- readODS::read_ods(here::here(path))
 
-  seq_len(nrow(ds)) |>
-    lapply(function(x) {
-      ds[x, ] |>
+  ls <- split.default(ds,grepl(".2$",colnames(ds))) |>
+    lapply(na.omit) |> lapply(setNames,c("assessor","start","stop")) |>
+    lapply(function(.x){
+  seq_len(nrow(.x)) |>
+    lapply(function(.y) {
+      .x[.y, ] |>
         dplyr::tibble(
           record_id = paste0("svd_", seq(start, stop)),
-          allocated_assessor = assessor
+          allocated_assessor = multi_replace(assessor,key=key)
         ) |>
         dplyr::select(tidyselect::all_of(c(
           "record_id",
@@ -472,6 +490,27 @@ allocate_assessors <- function(path = "data/allocation.csv") {
         )))
     }) |>
     dplyr::bind_rows()
+    })
+
+  out <- dplyr::full_join(ls[[1]],
+                   ls[[2]] |> setNames(c("record_id","allocated_assessor_2")))
+
+  testing <- out |>
+    dplyr::mutate(test=
+                    dplyr::if_else(allocated_assessor==allocated_assessor_2,
+                                   TRUE,
+                                   FALSE,
+                                   missing=FALSE)) |>
+    dplyr::filter(allocated_assessor!="all")
+
+  if (testing |>
+      (function(x){any(x$test)})()
+  ){
+    print(dplyr::filter(testing,test) )
+    stop("The samme assessor is allocated twice to the same subject")
+  }
+
+  out
 }
 
 #' Cuts hms data into intervals
