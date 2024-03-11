@@ -109,7 +109,7 @@ modify_data_talos <- function(data,
 #' data <- import_resist()
 #' skimr::skim(data)
 import_resist <- function(key = "RESIST-MIGRATION", keyring = "REDCAP_APIs", service = "redcapAPI",
-                          vars = c("resistid", "cpr", "navn", "scan_dato_tid", "afdelingid", "target_population")) {
+                          vars = c("resistid", "cpr", "navn", "scan_dato_tid", "afdelingid", "target_population","diagnosis")) {
   REDCapR::redcap_read(
     redcap_uri = "https://redcap.au.dk/api/", token = keyring::key_get(service = service, username = key, keyring = keyring),
     fields = vars
@@ -126,13 +126,14 @@ import_resist <- function(key = "RESIST-MIGRATION", keyring = "REDCAP_APIs", ser
 #'
 #' @examples
 #' resist_aarhus <- import_redcap(
-#'   key = "RESIST-MIGRATION", keyring = "REDCAP_APIs", service = "redcapAPI",
-#'   vars = c("resistid", "cpr", "navn", "scan_dato_tid", "afdelingid", "target_population")
+#'   key = "RESIST-MIGRATION", keyring = "REDCAP_APIs", service = "redcapAPI"
 #' ) |>
-#'   filter_resist(site = 1, target = 1, datetime.var = "scan_dato_tid")
-filter_resist <- function(data, site, target, datetime.var) {
+#'   filter_resist(site = 1, target = 1, datetime.var = "scan_dato_tid" , diag= 1)
+#'data |> filter_resist()
+filter_resist <- function(data, site = 1, target = 1, datetime.var = "scan_dato_tid", diag=1) {
   data |>
     dplyr::filter(afdelingid %in% site) |>
+    dplyr::filter(diagnosis %in% diag) |>
     dplyr::filter(target_population %in% target) |>
     dplyr::filter(!is.na(datetime.var))
 }
@@ -148,11 +149,11 @@ filter_resist <- function(data, site, target, datetime.var) {
 #' resist_aarhus |> modify_data_resist(trial = "RESIST", id.var = resistid, datetime.var = scan_dato_tid, name.var = navn)
 modify_data_resist <- function(data,
                                index = redcap_get_n(),
-                               trial,
-                               id.var = inkl_rnumb,
+                               trial = "RESIST",
+                               id.var = resistid,
                                cpr.var = cpr,
-                               datetime.var,
-                               name.var = talos_inkl03x) {
+                               datetime.var = scan_dato_tid,
+                               name.var = navn) {
   ids <- seq_len(nrow(data)) + (index)
 
   data |>
@@ -188,7 +189,7 @@ modify_data_resist <- function(data,
 #'   write2db()
 #' resist_ds <- import_resist() |>
 #'   filter_resist() |>
-#'   modify_data_resist()
+#'   modify_data_resist(index=509)
 #' resist_ds |> write2db()
 write2db <- function(data, key = "SVD_REDCAP_API") {
   REDCapR::redcap_write(
@@ -197,6 +198,33 @@ write2db <- function(data, key = "SVD_REDCAP_API") {
     ds_to_write = data
   )
 }
+
+################################################################################
+########
+########      DATA BACKUP
+########
+################################################################################
+
+# The following is just a mixed bag of commands from backing up
+
+# backup <- REDCapR::redcap_read_oneshot(
+#   redcap_uri = "https://redcap.au.dk/api/",
+#   token = keyring::key_get("SVD_REDCAP_API"))
+
+# svd <- backup$data |> dplyr::filter(!is.na(redcap_repeat_instance))
+#
+# resist <- backup$data |> dplyr::filter(trial_name=="RESIST")
+#
+# resist_svd_backup <- resist |> dplyr::filter(record_id %in% svd$record_id) |> dplyr::select(record_id,trial_id) |> dplyr::left_join(dplyr::select(svd,record_id,tidyselect::starts_with("redcap"),tidyselect::starts_with("svd")),by="record_id")|>
+#   dplyr::filter(svd_perf==1) |> dplyr::select(-record_id)
+#
+# dplyr::inner_join(resist_svd_backup,dplyr::select(resist_ds,record_id,trial_id))|>
+#   dplyr::select(-trial_id) |>
+#   dplyr::mutate(
+#     svd_time=strftime(svd_time, "%H:%M"),
+#     svd_time_scan=strftime(svd_time_scan, "%H:%M")
+#   ) |>
+#   write2db()
 
 ################################################################################
 ########

@@ -4,6 +4,7 @@ date: last-modified
 format: 
   html: default
   pdf: default
+  docx: default
 editor: visual
 ---
 
@@ -14,12 +15,47 @@ editor: visual
 #| echo: false
 #| label: allocation-table
 #| tbl-cap: Assessor allocation of subject IDs
-read.csv(here::here("data/allocation.csv")) |>
-    na.omit() |> 
-  dplyr::transmute(assessor,
-    IDs = paste0("svd_", start, "-", stop)
-  ) |>
+source(here::here("data_local/local.R"))
+source(here::here("R/functions.R"))
+
+suppressMessages(
+readODS::read_ods(here::here("data/allocation.ods")) |>
+  (\(.x){
+    split.default(.x, grepl(".2$", colnames(.x)))
+  })() |>
+  lapply(na.omit) |>
+  lapply(setNames, c("assessor", "start", "stop")) |>
+  lapply(function(.x) {
+    .x |>
+      dplyr::tibble(
+        "ids" = paste0(start, "-", stop),
+        allocated_assessor = multi_replace(assessor, key = assessor_key)
+      ) |>
+      dplyr::select(tidyselect::all_of(c(
+        "allocated_assessor", "ids"
+      )))
+  }) |>
+  dplyr::bind_rows() |>
+  (\(.y){
+    split(.y, .y$allocated_assessor)
+  })() |>
+  purrr::map(function(.z) {
+    if (nrow(.z) > 1) {
+      vals <- unique(.z[2][[1]])
+
+      tibble::tibble(
+        .z[[1]][1],
+        paste0(vals, collapse = ", ")
+      ) |> setNames(names(.z))
+    } else {
+      .z
+    }
+  }) |>
+  dplyr::bind_rows() |>
+  dplyr::arrange(purrr::map_chr(strsplit(ids,"-"),purrr::pluck,1) |> as.numeric()) |>
+  setNames(c("assessor", "IDs (svd_)")) |> 
   knitr::kable()
+)
 ```
 
 ## Suggested workflow {#sec-suggested-workflow}
